@@ -9,19 +9,30 @@ DOTFILES_ROOT="$(pwd)"
 # Make bash finicky.
 set -e
 
-info () {
-    printf "===> %s\n" "$1"
+source "$DOTFILES_ROOT/lib/logging.sh"
+
+link () {
+    local src="$1"
+    local dest="$2"
+    if [ -e "$dest" ]; then
+        if [ -h "$dest" ]; then
+            # Kill any existing links.
+            rm "$dest"
+        else
+            failure "$dest already exists and is not a link. Clean it up!"
+        fi
+    fi
+    ln -s "$src" "$dest"
+    success "Linked $src to $dest."
 }
 
-success () {
-    printf "\033[0;32m===>\033[0m %s\n" "$1"
+main () {
+    info "Let's get this party started!"
+
+    info "Symlink ALL THE THINGS!"
+    link "$DOTFILES_ROOT/vim" "$HOME/.vim.test"
+    link "$DOTFILES_ROOT/vim" "$HOME/goboom"
+    success "You're golden!"
 }
 
-failure () {
-    printf "\033[0;31m===>\033[0m %s\n" "$1"
-    exit 1
-}
-
-info "hey there!"
-success "look at me!"
-failure "ouch"
+main
