@@ -12,8 +12,7 @@ set -e
 source "$DOTFILES_ROOT/lib/logging.sh"
 
 link () {
-    local src="$1"
-    local dest="$2"
+    declare src="$1" dest="$2"
     if [ -e "$dest" ]; then
         if [ -h "$dest" ]; then
             # Kill any existing links.
@@ -30,8 +29,18 @@ main () {
     info "Let's get this party started!"
 
     info "Symlink ALL THE THINGS!"
-    link "$DOTFILES_ROOT/vim" "$HOME/.vim.test"
-    link "$DOTFILES_ROOT/vim" "$HOME/goboom"
+    link "$DOTFILES_ROOT/vim" "$HOME/.vim"
+    # TODO: need aliases
+    # TODO: need env vars
+    # TODO: diagnostic check for commands
+
+    info "Bootstrapping Vim."
+    curl -fLo "$DOTFILES_ROOT/vim/autoload/plug.vim" --silent \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    success "Fetched vim-plug."
+
+    info "Manual steps:"
+    info " - Open Vim and run :PlugInstall."
     success "You're golden!"
 }
 

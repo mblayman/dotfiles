@@ -57,3 +57,4 @@ target/
 
 # Vim
 *.swp
+vim/autoload/plug.vim
