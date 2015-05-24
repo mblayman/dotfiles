@@ -39,3 +39,6 @@ autocmd FileType javascript,html,htmldjango setlocal ts=2 sw=2 sts=2 expandtab
 set number
 set relativenumber
 set scrolloff=10
+
+" Apply vimrc changes immediately.
+autocmd BufWritePost vimrc source $MYVIMRC
