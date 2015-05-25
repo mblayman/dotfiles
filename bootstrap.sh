@@ -35,9 +35,14 @@ main () {
     # TODO: diagnostic check for commands
 
     info "Bootstrapping Vim."
-    curl -fLo "$DOTFILES_ROOT/vim/autoload/plug.vim" --silent \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    success "Fetched vim-plug."
+    local vimplug="$DOTFILES_ROOT/vim/autoload/plug.vim"
+    if [ -e "$vimplug" ]; then
+        success "vim-plug is available."
+    else
+        curl -fLo "$vimplug" --silent \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        success "Fetched vim-plug."
+    fi
 
     info "Manual steps:"
     info " - Open Vim and run :PlugInstall."
