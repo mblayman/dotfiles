@@ -30,6 +30,7 @@ main () {
 
     info "Symlink ALL THE THINGS!"
     link "$DOTFILES_ROOT/vim" "$HOME/.vim"
+    link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
     # TODO: need aliases
     # TODO: need env vars
     # TODO: diagnostic check for commands
