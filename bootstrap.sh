@@ -36,13 +36,6 @@ main () {
 
     check_for_tools
 
-    info "Symlink ALL THE THINGS!"
-    link "$DOTFILES_ROOT/vim" "$HOME/.vim"
-    link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
-    link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
-    # TODO: need aliases
-    # TODO: need env vars
-
     info "Boostrapping Zsh."
     if [[ $SHELL == "/bin/zsh" ]]; then
         success "zsh is available."
@@ -67,6 +60,12 @@ main () {
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         success "Fetched vim-plug."
     fi
+
+    info "Symlink ALL THE THINGS!"
+    link "$DOTFILES_ROOT/vim" "$HOME/.vim"
+    link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
+    link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
+    link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
 
     info "Manual steps:"
     info " - Open Vim and run :PlugInstall."
