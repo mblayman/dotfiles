@@ -11,6 +11,12 @@ set -e
 
 source "$DOTFILES_ROOT/lib/logging.sh"
 
+check_for_tools () {
+    info "Check for all the required tools."
+    hash git 2>/dev/null || failure "git is not installed."
+    success "All required tools are installed."
+}
+
 link () {
     declare src="$1" dest="$2"
     if [ -e "$dest" ]; then
@@ -28,12 +34,29 @@ link () {
 main () {
     info "Let's get this party started!"
 
+    check_for_tools
+
     info "Symlink ALL THE THINGS!"
     link "$DOTFILES_ROOT/vim" "$HOME/.vim"
     link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
+    link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
     # TODO: need aliases
     # TODO: need env vars
-    # TODO: diagnostic check for commands
+
+    info "Boostrapping Zsh."
+    if [[ $SHELL == "/bin/zsh" ]]; then
+        success "zsh is available."
+    else
+        failure "Zsh is not your shell. Set with 'chsh -s /bin/zsh'."
+    fi
+    local omz="$HOME/.oh-my-zsh"
+    if [ -d "$omz" ]; then
+        success "Oh My Zsh is available."
+    else
+        git clone --depth=1 --quiet \
+            https://github.com/robbyrussell/oh-my-zsh.git "$omz"
+        success "Fetched Oh My Zsh."
+    fi
 
     info "Bootstrapping Vim."
     local vimplug="$DOTFILES_ROOT/vim/autoload/plug.vim"
