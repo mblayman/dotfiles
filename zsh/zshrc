@@ -80,3 +80,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias hcov="nosetests --with-coverage --cover-package=handroll"
+alias emailserve="python -m smtpd -n -c DebuggingServer localhost:1025"
