@@ -64,6 +64,7 @@ main () {
     info "Symlink ALL THE THINGS!"
     link "$DOTFILES_ROOT/vim" "$HOME/.vim"
     link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
+    link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
     link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
     link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
 

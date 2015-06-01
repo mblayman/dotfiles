@@ -1,0 +1,7 @@
+[user]
+	name = Matt Layman
+	email = matthewlayman@gmail.com
+[color]
+	ui = true
+[push]
+	default = simple
