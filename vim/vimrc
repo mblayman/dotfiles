@@ -9,6 +9,9 @@ Plug 'nicholaides/words-to-avoid.vim'
 " Syntax highlighting and style checking.
 Plug 'Syntastic'
 
+" Surround text with tags and quotes.
+Plug 'tpope/vim-surround'
+
 " On-demand loading
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
