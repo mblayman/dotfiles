@@ -61,10 +61,20 @@ main () {
         success "Fetched vim-plug."
     fi
 
+    info "Make Zee Deerectories!"
+    local pip="$HOME/.pip"
+    if [ -d "$pip" ]; then
+        success "$pip exists."
+    else
+        mkdir -p "$pip"
+        success "Created $pip."
+    fi
+
     info "Symlink ALL THE THINGS!"
     link "$DOTFILES_ROOT/vim" "$HOME/.vim"
     link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
     link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
+    link "$DOTFILES_ROOT/pip.conf" "$HOME/.pip/pip.conf"
     link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
     link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
 
