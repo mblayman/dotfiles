@@ -9,6 +9,9 @@ Plug 'nicholaides/words-to-avoid.vim'
 " Syntax highlighting and style checking.
 Plug 'Syntastic'
 
+" Comment stuff out quickly.
+Plug 'tpope/vim-commentary'
+
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
 
@@ -45,3 +48,9 @@ set scrolloff=10
 
 " Apply vimrc changes immediately.
 autocmd BufWritePost vimrc source $MYVIMRC
+
+" Assume HTML files are Django templates for simplicity.
+autocmd BufNewFile,BufRead *.html set filetype=htmldjango
+
+" Use a different comment style for Django's HTML templates.
+autocmd FileType htmldjango set commentstring={#\ %s\ #}
