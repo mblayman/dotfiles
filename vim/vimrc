@@ -54,3 +54,9 @@ autocmd BufNewFile,BufRead *.html set filetype=htmldjango
 
 " Use a different comment style for Django's HTML templates.
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
+
+" Leader commands
+let mapleader = "\<Space>"
+
+" Quick save
+nnoremap <Leader>w :w<CR>
