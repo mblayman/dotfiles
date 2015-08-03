@@ -3,6 +3,9 @@ call plug#begin('~/.vim/plugged')
 " Fix Python autoindent after <CR> following parentheses.
 Plug 'hynek/vim-python-pep8-indent'
 
+" Fast file searching.
+Plug 'kien/ctrlp.vim'
+
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
 
@@ -23,6 +26,9 @@ Plug 'tpope/vim-surround'
 "Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 call plug#end()
+
+" Make CtrlP ignore files in the .gitignore.
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--max-line-length=105"
@@ -59,6 +65,9 @@ autocmd FileType htmldjango set commentstring={#\ %s\ #}
 
 " Leader commands
 let mapleader = "\<Space>"
+
+" Launch CtrlP
+nnoremap <Leader>c :CtrlP<CR>
 
 " Quick save
 nnoremap <Leader>w :w<CR>
