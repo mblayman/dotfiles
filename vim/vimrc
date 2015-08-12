@@ -71,3 +71,6 @@ nnoremap <Leader>c :CtrlP<CR>
 
 " Quick save
 nnoremap <Leader>w :w<CR>
+
+" Escape is so far away.
+imap <C-l> <Esc>
