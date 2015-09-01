@@ -11,10 +11,9 @@ set -e
 
 source "$DOTFILES_ROOT/lib/logging.sh"
 
-check_for_tools () {
-    info "Check for all the required tools."
-    hash git 2>/dev/null || failure "git is not installed."
-    success "All required tools are installed."
+check_for_tool () {
+    declare tool="$1"
+    hash "$tool" 2>/dev/null || failure "$tool is not installed."
 }
 
 link () {
@@ -34,7 +33,10 @@ link () {
 main () {
     info "Let's get this party started!"
 
-    check_for_tools
+    info "Check for all the required tools."
+    check_for_tool "ag"
+    check_for_tool "git"
+    success "All required tools are installed."
 
     info "Boostrapping Zsh."
     if [[ $SHELL == "/bin/zsh" ]]; then
