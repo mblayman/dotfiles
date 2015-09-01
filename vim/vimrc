@@ -9,6 +9,9 @@ Plug 'kien/ctrlp.vim'
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
 
+" Search in Vim.
+Plug 'rking/ag.vim'
+
 " Syntax highlighting and style checking.
 Plug 'Syntastic'
 
