@@ -83,6 +83,9 @@ nnoremap <Leader>a :Ag
 " Launch CtrlP
 nnoremap <Leader>c :CtrlP<CR>
 
+" Run a test suite.
+nmap <silent> <Leader>s :TestSuite<CR>
+
 " Run a test.
 nmap <silent> <Leader>t :TestNearest<CR>
 
