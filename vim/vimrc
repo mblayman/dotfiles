@@ -47,6 +47,9 @@ let g:syntastic_aggregate_errors = 1
 
 let g:markdown_fenced_languages = ['python']
 
+" Close the preview context helper after leaving insert mode.
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 syntax on
 filetype plugin indent on
 set expandtab
