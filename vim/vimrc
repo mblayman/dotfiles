@@ -92,6 +92,9 @@ nnoremap <Leader>c :CtrlP<CR>
 " Insert pdb.
 nnoremap <Leader>d oimport pdb; pdb.set_trace()<Esc>
 
+" Run a test file.
+nmap <silent> <Leader>f :TestFile<CR>
+
 " Run a test suite.
 nmap <silent> <Leader>s :TestSuite<CR>
 
