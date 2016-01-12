@@ -60,3 +60,6 @@ target/
 vim/autoload/plug.vim
 vim/plugged/
 vim/.netrwhist
+
+# OS X
+.DS_Store
