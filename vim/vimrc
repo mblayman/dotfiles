@@ -70,6 +70,10 @@ set number
 set relativenumber
 set scrolloff=10
 
+" Hide instead of close files when opening a new file while there are unsaved
+" changes
+set nohidden
+
 " OS X does some weird stuff to PATH on zsh that messes with venvs.
 " Using bash is a safe alternative and I don't really need the power
 " of zsh through Vim.
