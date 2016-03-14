@@ -28,6 +28,9 @@ Plug 'tpope/vim-commentary'
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
 
+" Make netrw more awesome.
+Plug 'tpope/vim-vinegar'
+
 " Code completion
 Plug 'Valloric/YouCompleteMe'
 
