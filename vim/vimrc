@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
+" Elixir support.
+Plug 'elixir-lang/vim-elixir'
+
 " Fix Python autoindent after <CR> following parentheses.
 Plug 'hynek/vim-python-pep8-indent'
 
