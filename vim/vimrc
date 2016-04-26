@@ -102,6 +102,7 @@ nnoremap <Leader>a :Ag
 
 " Launch CtrlP
 nnoremap <Leader>c :CtrlP<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
 
 " Insert pdb.
 nnoremap <Leader>d oimport pdb; pdb.set_trace()<Esc>
