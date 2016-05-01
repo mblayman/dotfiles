@@ -34,6 +34,7 @@ main () {
     info "Let's get this party started!"
 
     info "Check for all the required tools."
+    check_for_tool "vim"
     check_for_tool "ag"
     check_for_tool "git"
     # cmake is a build dependency for YouCompleteMe.
