@@ -1,3 +1,5 @@
 export EDITOR=vim
 PATH="/usr/local/sbin:$PATH"
 export PATH
+WORKON_HOME="$HOME/.virtualenvs"
+export WORKON_HOME
