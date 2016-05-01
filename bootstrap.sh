@@ -39,6 +39,7 @@ main () {
     check_for_tool "git"
     # cmake is a build dependency for YouCompleteMe.
     check_for_tool "cmake"
+    info "You may need to install virtualenvwrapper."
     success "All required tools are installed."
 
     info "Boostrapping Zsh."
@@ -86,6 +87,7 @@ main () {
     info "Manual steps:"
     info " - Open Vim and run :PlugInstall."
     installer="$DOTFILES_ROOT/vim/plugged/YouCompleteMe/install.py"
+    info " - Install python-dev library."
     info " - Compile YouCompleteMe with $installer."
     success "You're golden!"
 }
