@@ -28,6 +28,9 @@ Plug 'Syntastic'
 " Comment stuff out quickly.
 Plug 'tpope/vim-commentary'
 
+" Smart completion of do/end.
+Plug 'tpope/vim-endwise'
+
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
 
