@@ -31,6 +31,9 @@ Plug 'tpope/vim-commentary'
 " Smart completion of do/end.
 Plug 'tpope/vim-endwise'
 
+" Git in Vim
+Plug 'tpope/vim-fugitive'
+
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
 
