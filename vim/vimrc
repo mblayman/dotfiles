@@ -12,6 +12,9 @@ Plug 'janko-m/vim-test'
 " Fast file searching.
 Plug 'kien/ctrlp.vim'
 
+" Elm support.
+Plug 'lambdatoast/elm.vim'
+
 " Local Vim settings per project.
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/local_vimrc'
