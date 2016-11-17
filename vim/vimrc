@@ -40,6 +40,9 @@ Plug 'tpope/vim-fugitive'
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
 
+" Convenience shortcuts for quickly navigating quicklists and such.
+Plug 'tpope/vim-unimpaired'
+
 " Make netrw more awesome.
 Plug 'tpope/vim-vinegar'
 
