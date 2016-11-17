@@ -82,7 +82,7 @@ set title
 let &colorcolumn=81
 highlight ColorColumn term=standout ctermbg=7
 set backspace=2 " Make backspace work in a sane manner.
-autocmd FileType javascript,html,htmldjango setlocal ts=2 sw=2 sts=2 expandtab
+autocmd FileType javascript,html,htmldjango,yaml setlocal ts=2 sw=2 sts=2 expandtab
 set number
 set relativenumber
 set scrolloff=10
