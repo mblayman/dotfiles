@@ -81,3 +81,4 @@ source $ZSH/oh-my-zsh.sh
 
 alias hcov="nosetests --with-coverage --cover-package=handroll"
 alias emailserve="python -m smtpd -n -c DebuggingServer localhost:1025"
+alias love="/Applications/love.app/Contents/MacOS/love"
