@@ -29,7 +29,7 @@ Plug 'nicholaides/words-to-avoid.vim'
 Plug 'rking/ag.vim'
 
 " Syntax highlighting and style checking.
-Plug 'Syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " Comment stuff out quickly.
 Plug 'tpope/vim-commentary'
