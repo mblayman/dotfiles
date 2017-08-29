@@ -77,6 +77,11 @@ let g:markdown_fenced_languages = ['python']
 " Close the preview context helper after leaving insert mode.
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" local_vimrc is constantly asking if I want to use a local_vimrc
+" every time I commit. This is super annoying.
+call lh#local_vimrc#munge('whitelist', $HOME)
+call lh#local_vimrc#filter_list('asklist', 'v:val != $HOME')
+
 syntax on
 filetype plugin indent on
 set expandtab
