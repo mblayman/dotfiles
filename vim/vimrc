@@ -28,6 +28,9 @@ Plug 'nicholaides/words-to-avoid.vim'
 " Search in Vim.
 Plug 'rking/ag.vim'
 
+" Support for viewing Vue files.
+Plug 'posva/vim-vue'
+
 " Syntax highlighting and style checking.
 Plug 'vim-syntastic/syntastic'
 
