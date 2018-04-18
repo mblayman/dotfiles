@@ -10,3 +10,5 @@ alias hcov="nosetests --with-coverage --cover-package=handroll"
 
 source /usr/local/bin/virtualenvwrapper.sh
 source ~/sbvenv/bin/activate
+
+export PATH="$HOME/.cargo/bin:$PATH"
