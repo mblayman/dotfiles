@@ -101,6 +101,10 @@ set number
 set relativenumber
 set scrolloff=10
 
+" I don't really like folds. Disable them (some plugins is enabling by default
+" on reStructured Text.
+set nofoldenable
+
 " Hide instead of close files when opening a new file while there are unsaved
 " changes
 set nohidden
