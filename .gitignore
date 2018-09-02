@@ -58,6 +58,7 @@ target/
 # Vim
 *.swp
 vim/autoload/plug.vim
+vim/black
 vim/plugged/
 vim/.netrwhist
 

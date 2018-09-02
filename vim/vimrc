@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
+" Black formatter
+Plug 'ambv/black'
+
 " Elixir support.
 Plug 'elixir-lang/vim-elixir'
 
@@ -122,6 +125,9 @@ autocmd BufNewFile,BufRead *.html set filetype=htmldjango
 
 " Handlebars syntax highlighting uses a Mustache plugin.
 autocmd BufNewFile,BufRead *.hbs set filetype=mustache
+
+" Run Black on save.
+autocmd BufWritePre *.py execute ':Black'
 
 " Use a different comment style for Django's HTML templates.
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
