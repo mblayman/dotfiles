@@ -35,8 +35,9 @@ main () {
 
     info "Check for all the required tools."
     check_for_tool "vim"
-    check_for_tool "ag"
     check_for_tool "git"
+    # ripgrep
+    check_for_tool "rg"
     # cmake is a build dependency for YouCompleteMe.
     check_for_tool "cmake"
     info "You may need to install virtualenvwrapper."
