@@ -3,6 +3,9 @@ call plug#begin('~/.vim/plugged')
 " Black formatter
 Plug 'ambv/black'
 
+" Fast file searching.
+Plug 'ctrlpvim/ctrlp.vim'
+
 " Elixir support.
 Plug 'elixir-lang/vim-elixir'
 
@@ -11,9 +14,6 @@ Plug 'hynek/vim-python-pep8-indent'
 
 " Integrate a test runner.
 Plug 'janko-m/vim-test'
-
-" Fast file searching.
-Plug 'kien/ctrlp.vim'
 
 " Elm support.
 Plug 'lambdatoast/elm.vim'
