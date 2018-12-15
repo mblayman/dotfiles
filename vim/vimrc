@@ -35,7 +35,7 @@ Plug 'nicholaides/words-to-avoid.vim'
 Plug 'posva/vim-vue'
 
 " Syntax highlighting and style checking.
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 
 " Comment stuff out quickly.
 Plug 'tpope/vim-commentary'
@@ -57,6 +57,9 @@ Plug 'tpope/vim-vinegar'
 
 " Code completion
 Plug 'Valloric/YouCompleteMe'
+
+" Linters and such.
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -100,8 +103,8 @@ set number
 set relativenumber
 set scrolloff=10
 
-" I don't really like folds. Disable them (some plugins is enabling by default
-" on reStructured Text.
+" I don't really like folds. Disable them (some plugin is enabling by default
+" on reStructured Text).
 set nofoldenable
 
 " Hide instead of close files when opening a new file while there are unsaved
