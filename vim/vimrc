@@ -34,9 +34,6 @@ Plug 'nicholaides/words-to-avoid.vim'
 " Support for viewing Vue files.
 Plug 'posva/vim-vue'
 
-" Syntax highlighting and style checking.
-" Plug 'vim-syntastic/syntastic'
-
 " Comment stuff out quickly.
 Plug 'tpope/vim-commentary'
 
