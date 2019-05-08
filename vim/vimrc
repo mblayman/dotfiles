@@ -34,6 +34,9 @@ Plug 'nicholaides/words-to-avoid.vim'
 " Support for viewing Vue files.
 Plug 'posva/vim-vue'
 
+" Make the quickfix window modifiable for large find and replace operations.
+Plug 'stefandtw/quickfix-reflector.vim'
+
 " Comment stuff out quickly.
 Plug 'tpope/vim-commentary'
 
