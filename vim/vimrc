@@ -17,6 +17,7 @@ Plug 'janko-m/vim-test'
 
 " Search in Vim.
 Plug 'jremmen/vim-ripgrep'
+let g:rg_command = 'rg --vimgrep -S'
 
 " Elm support.
 Plug 'lambdatoast/elm.vim'
