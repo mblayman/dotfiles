@@ -1,26 +1,20 @@
 call plug#begin('~/.vim/plugged')
 
 " Black formatter
-Plug 'ambv/black'
+Plug 'psf/black'
 
 " Fast file searching.
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Elixir support.
-Plug 'elixir-lang/vim-elixir'
-
 " Fix Python autoindent after <CR> following parentheses.
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Integrate a test runner.
-Plug 'janko-m/vim-test'
+Plug 'vim-test/vim-test'
 
 " Search in Vim.
 Plug 'jremmen/vim-ripgrep'
 let g:rg_command = 'rg --vimgrep -S'
-
-" Elm support.
-Plug 'lambdatoast/elm.vim'
 
 " Local Vim settings per project.
 Plug 'LucHermitte/lh-vim-lib'
@@ -31,9 +25,6 @@ Plug 'mustache/vim-mustache-handlebars'
 
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
-
-" Support for viewing Vue files.
-Plug 'posva/vim-vue'
 
 " Make the quickfix window modifiable for large find and replace operations.
 Plug 'stefandtw/quickfix-reflector.vim'
@@ -57,10 +48,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 " Code completion
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " Linters and such.
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
