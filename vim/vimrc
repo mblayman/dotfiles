@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
-" Black formatter
-Plug 'psf/black'
+" TOML syntax highlighting
+Plug 'cespare/vim-toml'
 
 " Fast file searching.
 Plug 'ctrlpvim/ctrlp.vim'
@@ -26,6 +26,9 @@ Plug 'mustache/vim-mustache-handlebars'
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
 
+" Black formatter
+Plug 'psf/black'
+
 " Make the quickfix window modifiable for large find and replace operations.
 Plug 'stefandtw/quickfix-reflector.vim'
 
@@ -37,6 +40,9 @@ Plug 'tpope/vim-endwise'
 
 " Git in Vim
 Plug 'tpope/vim-fugitive'
+
+" Fugitive extensions (for Gbrowse GitHub links)
+Plug 'tpope/vim-rhubarb'
 
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
