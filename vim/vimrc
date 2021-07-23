@@ -95,6 +95,14 @@ set number
 set relativenumber
 set scrolloff=10
 
+" Set dark mode stuff
+" set background=dark
+" colorscheme default
+" ALE errors are totally unreadable with the default theme of peachpuff
+" highlight ALEError ctermbg=1
+" This sets the QuickFix highlighted line to be something other than white text.
+" highlight Search ctermfg=4
+
 " I don't really like folds. Disable them (some plugin is enabling by default
 " on reStructured Text).
 set nofoldenable
