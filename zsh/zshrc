@@ -54,6 +54,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -79,6 +81,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias hcov="nosetests --with-coverage --cover-package=handroll"
 alias emailserve="python -m smtpd -n -c DebuggingServer localhost:1025"
 alias love="/Applications/love.app/Contents/MacOS/love"

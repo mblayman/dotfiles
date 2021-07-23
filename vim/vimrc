@@ -3,9 +3,6 @@ call plug#begin('~/.vim/plugged')
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
-" Fast file searching.
-Plug 'ctrlpvim/ctrlp.vim'
-
 " Fix Python autoindent after <CR> following parentheses.
 Plug 'Vimjas/vim-python-pep8-indent'
 
@@ -15,6 +12,10 @@ Plug 'vim-test/vim-test'
 " Search in Vim.
 Plug 'jremmen/vim-ripgrep'
 let g:rg_command = 'rg --vimgrep -S'
+
+" Fast file searching with fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Local Vim settings per project.
 Plug 'LucHermitte/lh-vim-lib'
@@ -63,8 +64,6 @@ call plug#end()
 
 if executable('rg')
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
 endif
 
 let g:ale_lint_on_text_changed = 'never'
@@ -137,9 +136,9 @@ let mapleader = "\<Space>"
 " Quick search
 nnoremap <Leader>a :Rg 
 
-" Launch CtrlP
-nnoremap <Leader>c :CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
+" Launch fzf
+nnoremap <Leader>c :GFiles<CR>
+nnoremap <Leader>b :Buffers<CR>
 
 " Insert pdb.
 nnoremap <Leader>d oimport pdb; pdb.set_trace()<Esc>
