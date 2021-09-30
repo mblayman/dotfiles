@@ -3,6 +3,5 @@ PATH="/usr/local/sbin:$PATH"
 export PATH
 WORKON_HOME="$HOME/.virtualenvs"
 export WORKON_HOME
-export VAGRANT_USE_VAGRANT_TRIGGERS=1
 export MYPYPATH="$HOME/git/dod-backend/dod_backend"
-export BAT_THEME=GitHub
+export BAT_THEME="GitHub"

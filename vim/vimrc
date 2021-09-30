@@ -1,30 +1,21 @@
 call plug#begin('~/.vim/plugged')
 
-" Black formatter
-Plug 'ambv/black'
-
-" Fast file searching.
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Elixir support.
-Plug 'elixir-lang/vim-elixir'
+" TOML syntax highlighting
+Plug 'cespare/vim-toml'
 
 " Fix Python autoindent after <CR> following parentheses.
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Integrate a test runner.
-Plug 'janko-m/vim-test'
+Plug 'vim-test/vim-test'
 
 " Search in Vim.
 Plug 'jremmen/vim-ripgrep'
-let g:rg_command = 'rg --vimgrep -S --sort path'
+let g:rg_command = 'rg --vimgrep -S'
 
 " Fast file searching with fzf.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" Elm support.
-Plug 'lambdatoast/elm.vim'
 
 " Local Vim settings per project.
 Plug 'LucHermitte/lh-vim-lib'
@@ -41,8 +32,8 @@ if has('nvim')
     Plug 'neovim/nvim-lspconfig'
 endif
 
-" Support for viewing Vue files.
-Plug 'posva/vim-vue'
+" Black formatter
+Plug 'psf/black'
 
 " Make the quickfix window modifiable for large find and replace operations.
 Plug 'stefandtw/quickfix-reflector.vim'
@@ -57,6 +48,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
+" Fugitive extensions (for Gbrowse GitHub links)
+Plug 'tpope/vim-rhubarb'
+
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
 
@@ -67,17 +61,15 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 " Code completion
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " Linters and such.
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
 if executable('rg')
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
 endif
 
 let g:ale_lint_on_text_changed = 'never'
@@ -110,6 +102,14 @@ autocmd FileType javascript,lua,html,htmldjango,yaml setlocal ts=2 sw=2 sts=2 ex
 set number
 set relativenumber
 set scrolloff=10
+
+" Set dark mode stuff
+" set background=dark
+" colorscheme default
+" ALE errors are totally unreadable with the default theme of peachpuff
+" highlight ALEError ctermbg=1
+" This sets the QuickFix highlighted line to be something other than white text.
+" highlight Search ctermfg=4
 
 " I don't really like folds. Disable them (some plugin is enabling by default
 " on reStructured Text).
@@ -145,11 +145,9 @@ let mapleader = "\<Space>"
 " Quick search
 nnoremap <Leader>a :Rg 
 
-" Launch CtrlP
+" Launch fzf
 nnoremap <Leader>c :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
-" nnoremap <Leader>c :CtrlP<CR>
-" nnoremap <Leader>b :CtrlPBuffer<CR>
 
 " Insert pdb.
 nnoremap <Leader>d oimport pdb; pdb.set_trace()<Esc>
