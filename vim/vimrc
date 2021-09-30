@@ -17,6 +17,11 @@ Plug 'janko-m/vim-test'
 
 " Search in Vim.
 Plug 'jremmen/vim-ripgrep'
+let g:rg_command = 'rg --vimgrep -S --sort path'
+
+" Fast file searching with fzf.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Elm support.
 Plug 'lambdatoast/elm.vim'
@@ -30,6 +35,11 @@ Plug 'mustache/vim-mustache-handlebars'
 
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
+
+" Common LSP configuration
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+endif
 
 " Support for viewing Vue files.
 Plug 'posva/vim-vue'
@@ -45,6 +55,7 @@ Plug 'tpope/vim-endwise'
 
 " Git in Vim
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Surround text with tags and quotes.
 Plug 'tpope/vim-surround'
@@ -70,6 +81,9 @@ if executable('rg')
 endif
 
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {
+\   'python': ['flake8', 'mypy', 'pylint'],
+\}
 
 let g:markdown_fenced_languages = ['python']
 
@@ -132,8 +146,10 @@ let mapleader = "\<Space>"
 nnoremap <Leader>a :Rg 
 
 " Launch CtrlP
-nnoremap <Leader>c :CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>c :GFiles<CR>
+nnoremap <Leader>b :Buffers<CR>
+" nnoremap <Leader>c :CtrlP<CR>
+" nnoremap <Leader>b :CtrlPBuffer<CR>
 
 " Insert pdb.
 nnoremap <Leader>d oimport pdb; pdb.set_trace()<Esc>
@@ -159,5 +175,22 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
+" Resize splits.
+nnoremap <S-Left> <C-w>3<<CR>
+nnoremap <S-Right> <C-w>3><CR>
+nnoremap <Leader>J <C-w>10+<CR>
+nnoremap <Leader>K <C-w>10-<CR>
+
 " Go to a definition
 nnoremap <Leader>y :YcmCompleter GoTo<CR>
+
+" There is some problem with YouCompleteMe and Python 3 support in Vim.
+" It's just a deprecation warning.
+silent! py3 pass
+
+let test#python#runner = "pytest"
+let test#python#pytest#options = "--reuse-db --junit-xml=''"
+let test#python#pytest#executable = "tools/pytest"
+
+let g:black_linelength = 119
+let g:black_skip_string_normalization = 1
