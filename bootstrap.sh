@@ -36,11 +36,14 @@ main () {
     info "Check for all the required tools."
     check_for_tool "fzf"
     check_for_tool "vim"
+    check_for_tool "nvim"
     check_for_tool "git"
     # ripgrep
     check_for_tool "rg"
     # cmake is a build dependency for YouCompleteMe.
     check_for_tool "cmake"
+    # To build the Lua LSP server
+    check_for_tool "ninja"
     info "You may need to install virtualenvwrapper."
     success "All required tools are installed."
 
@@ -69,6 +72,23 @@ main () {
         success "Fetched vim-plug."
     fi
 
+    info "Setting up Lua LSP server."
+    local lualsp="$DOTFILES_ROOT/nvim/lua-language-server"
+    if [ -e "$lualsp" ]; then
+        success "Lua LSP server is available."
+    else
+        git clone --depth=1 --quiet \
+            https://github.com/sumneko/lua-language-server "$lualsp"
+        cd "$lualsp"
+        git submodule update --init --recursive
+        cd 3rd/luamake
+        ./compile/install.sh
+        cd ../..
+        ./3rd/luamake/luamake rebuild
+        cd "$DOTFILES_ROOT"
+        success "Fetched Lua LSP server."
+    fi
+
     info "Make Zee Deerectories!"
     local pip="$HOME/.pip"
     if [ -d "$pip" ]; then
@@ -85,6 +105,7 @@ main () {
     link "$DOTFILES_ROOT/pip.conf" "$HOME/.pip/pip.conf"
     link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
     link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
+    link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
 
     info "Manual steps:"
     info " - Open Vim and run :PlugInstall."
