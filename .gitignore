@@ -62,5 +62,8 @@ vim/black
 vim/plugged/
 vim/.netrwhist
 
+# Neovim
+nvim/lua-language-server
+
 # OS X
 .DS_Store
