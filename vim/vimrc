@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
+" LuaFormatter support (i.e., Black for Lua)
+Plug 'andrejlevkovitch/vim-lua-format'
+
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
@@ -135,6 +138,9 @@ autocmd BufNewFile,BufRead *.hbs set filetype=mustache
 
 " Run Black on save.
 autocmd BufWritePre *.py execute ':Black'
+
+" Run LuaFormatter on save.
+autocmd BufWrite *.lua call LuaFormat()
 
 " Use a different comment style for Django's HTML templates.
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
