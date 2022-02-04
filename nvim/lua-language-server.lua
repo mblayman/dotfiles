@@ -33,6 +33,10 @@ require'lspconfig'.sumneko_lua.setup {
         globals = {'vim', 'describe', 'it'},
       },
       workspace = {
+        -- Tell the language server to stop prompting me
+        -- to cofigure my project as a LOVE project
+        checkThirdParty = false,
+
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
       },
