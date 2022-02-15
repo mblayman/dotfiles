@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
+" LuaFormatter support (i.e., Black for Lua)
+Plug 'andrejlevkovitch/vim-lua-format'
+
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
@@ -8,6 +11,10 @@ Plug 'Vimjas/vim-python-pep8-indent'
 
 " Integrate a test runner.
 Plug 'vim-test/vim-test'
+
+if has('nvim')
+    let test#strategy = 'neovim'
+endif
 
 " GraphQL support
 Plug 'jparise/vim-graphql'
@@ -26,6 +33,11 @@ Plug 'LucHermitte/local_vimrc'
 
 " Handlebars syntax highlighting.
 Plug 'mustache/vim-mustache-handlebars'
+
+" LSP support in Neovim.
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+endif
 
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
@@ -138,6 +150,9 @@ autocmd BufNewFile,BufRead *.hbs set filetype=mustache
 
 " Run Black on save.
 autocmd BufWritePre *.py execute ':Black'
+
+" Run LuaFormatter on save.
+autocmd BufWrite *.lua call LuaFormat()
 
 " Use a different comment style for Django's HTML templates.
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
