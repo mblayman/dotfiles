@@ -192,6 +192,3 @@ silent! py3 pass
 let test#python#runner = "pytest"
 let test#python#pytest#options = "--reuse-db --junit-xml=''"
 let test#python#pytest#executable = "tools/pytest"
-
-let g:black_linelength = 119
-let g:black_skip_string_normalization = 1
