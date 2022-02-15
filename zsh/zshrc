@@ -104,4 +104,5 @@ unalias gsts
 
 alias emailserve="python -m smtpd -n -c DebuggingServer localhost:1025"
 alias love="/Applications/love.app/Contents/MacOS/love"
+
 alias luamake=/Users/matt/dotfiles/nvim/lua-language-server/3rd/luamake/luamake
