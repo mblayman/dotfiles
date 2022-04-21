@@ -12,10 +12,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " Integrate a test runner.
 Plug 'vim-test/vim-test'
 
-if has('nvim')
-    let test#strategy = 'neovim'
-endif
-
 " GraphQL support
 Plug 'jparise/vim-graphql'
 
