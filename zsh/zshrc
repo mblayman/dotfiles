@@ -101,6 +101,10 @@ gch() {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias gsts
+# Deconflict with "git remote" alias
+unalias gr
+# I don't work for Grand Rounds.
+alias ih="gr"
 
 alias emailserve="python -m smtpd -n -c DebuggingServer localhost:1025"
 alias love="/Applications/love.app/Contents/MacOS/love"
