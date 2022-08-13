@@ -34,6 +34,7 @@ main () {
     info "Let's get this party started!"
 
     info "Check for all the required tools."
+    check_for_tool "direnv"
     check_for_tool "fzf"
     check_for_tool "vim"
     check_for_tool "nvim"
@@ -105,13 +106,14 @@ main () {
     link "$DOTFILES_ROOT/pip.conf" "$HOME/.pip/pip.conf"
     link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
     link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
+    mkdir -p "$HOME/.config"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
 
     info "Manual steps:"
     info " - Open Vim and run :PlugInstall."
     installer="$DOTFILES_ROOT/vim/plugged/YouCompleteMe/install.py"
     info " - Install python-dev library."
-    info " - Compile YouCompleteMe with $installer."
+    info " - Compile YouCompleteMe with $installer"
     success "You're golden!"
 }
 
