@@ -34,6 +34,7 @@ main () {
     info "Let's get this party started!"
 
     info "Check for all the required tools."
+    check_for_tool "bat"
     check_for_tool "direnv"
     check_for_tool "fzf"
     check_for_tool "vim"
