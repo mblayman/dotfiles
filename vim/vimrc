@@ -6,15 +6,11 @@ Plug 'andrejlevkovitch/vim-lua-format'
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
-" Fix Python autoindent after <CR> following parentheses.
-Plug 'Vimjas/vim-python-pep8-indent'
+" Linters and such.
+Plug 'dense-analysis/ale'
 
-" Integrate a test runner.
-Plug 'vim-test/vim-test'
-
-if has('nvim')
-    let test#strategy = 'neovim'
-endif
+" Go language support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Search in Vim.
 Plug 'jremmen/vim-ripgrep'
@@ -66,11 +62,21 @@ Plug 'tpope/vim-unimpaired'
 " Make netrw more awesome.
 Plug 'tpope/vim-vinegar'
 
+" Fix Python autoindent after <CR> following parentheses.
+Plug 'Vimjas/vim-python-pep8-indent'
+
+" Integrate a test runner.
+Plug 'vim-test/vim-test'
+
+if has('nvim')
+    let test#strategy = 'neovim'
+endif
+
 " Code completion
 Plug 'ycm-core/YouCompleteMe'
 
-" Linters and such.
-Plug 'dense-analysis/ale'
+" Zig language support
+Plug 'ziglang/zig.vim'
 
 call plug#end()
 
@@ -181,3 +187,6 @@ nnoremap <Leader>l <C-w>l
 
 " Go to a definition
 nnoremap <Leader>y :YcmCompleter GoTo<CR>
+
+" Git
+nnoremap <Leader>gb :Git blame<CR>
