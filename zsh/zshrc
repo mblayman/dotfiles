@@ -76,6 +76,14 @@ gch() {
   git checkout "$(git branch --all | grep -v remotes | grep feature/ml | fzf | tr -d '[:space:]')"
 }
 
+jira() {
+    open https://grandrounds.atlassian.net/secure/QuickSearch.jspa\?searchString\="$1"
+}
+
+conf() {
+    open https://grandrounds.atlassian.net/wiki/dosearchsite.action\?queryString\="$1"
+}
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -111,6 +119,6 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 
 alias luamake=/Users/matt/dotfiles/nvim/lua-language-server/3rd/luamake/luamake
 
+# FIXME: This is disabled until 90_asdf.sh stops breaking SHELL.
 # This loads the Included Health shell augmentations into your interactive shell
-. "$HOME/.ih/augment.sh"
-
+# . "$HOME/.ih/augment.sh"

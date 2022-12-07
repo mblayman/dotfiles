@@ -5,3 +5,4 @@ WORKON_HOME="$HOME/.virtualenvs"
 export WORKON_HOME
 export MYPYPATH="$HOME/git/dod-backend/dod_backend"
 export BAT_THEME="GitHub"
+export GR_HOME="$HOME/git"

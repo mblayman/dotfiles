@@ -77,6 +77,9 @@ Plug 'ycm-core/YouCompleteMe'
 " Linters and such.
 Plug 'dense-analysis/ale'
 
+" Zig support
+Plug 'ziglang/zig.vim'
+
 call plug#end()
 
 if executable('rg')
@@ -103,6 +106,7 @@ filetype plugin indent on
 set expandtab
 set ts=4 sw=4 sts=4
 set list listchars=tab:>-,trail:-
+au FileTYpe go setlocal nolist
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.hbs set filetype=html
 set title
