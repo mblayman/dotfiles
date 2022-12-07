@@ -6,11 +6,11 @@ Plug 'andrejlevkovitch/vim-lua-format'
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
-" Fix Python autoindent after <CR> following parentheses.
-Plug 'Vimjas/vim-python-pep8-indent'
+" Linters and such.
+Plug 'dense-analysis/ale'
 
-" Integrate a test runner.
-Plug 'vim-test/vim-test'
+" Go language support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " GraphQL support
 Plug 'jparise/vim-graphql'
@@ -71,13 +71,20 @@ Plug 'tpope/vim-unimpaired'
 " Make netrw more awesome.
 Plug 'tpope/vim-vinegar'
 
+" Fix Python autoindent after <CR> following parentheses.
+Plug 'Vimjas/vim-python-pep8-indent'
+
+" Integrate a test runner.
+Plug 'vim-test/vim-test'
+
+if has('nvim')
+    let test#strategy = 'neovim'
+endif
+
 " Code completion
 Plug 'ycm-core/YouCompleteMe'
 
-" Linters and such.
-Plug 'dense-analysis/ale'
-
-" Zig support
+" Zig language support
 Plug 'ziglang/zig.vim'
 
 call plug#end()
@@ -106,7 +113,7 @@ filetype plugin indent on
 set expandtab
 set ts=4 sw=4 sts=4
 set list listchars=tab:>-,trail:-
-au FileTYpe go setlocal nolist
+au BufRead,BufNewFile *.go setlocal nolist
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.hbs set filetype=html
 set title
@@ -199,6 +206,9 @@ nnoremap <Leader>K <C-w>10-<CR>
 
 " Go to a definition
 nnoremap <Leader>y :YcmCompleter GoTo<CR>
+
+" Git
+nnoremap <Leader>gb :Git blame<CR>
 
 " There is some problem with YouCompleteMe and Python 3 support in Vim.
 " It's just a deprecation warning.
