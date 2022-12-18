@@ -12,6 +12,12 @@ local Plug = vim.fn['plug#']
 -- to declare it.
 vim.call('plug#begin')
 
+-- LSP progress UI
+--
+-- This plugin adds a bit of UI above the status line to show the progress
+-- state of an LSP server if that state is available.
+Plug 'j-hui/fidget.nvim'
+
 -- The configuration plugin for Neovim LSP integration
 --
 -- This plugin provides configuration that integrates Neovim (an LSP client)
@@ -38,8 +44,8 @@ vim.call('plug#end')
 
 local servers = {'pyright'}
 
-require("mason").setup()
-require("mason-lspconfig").setup({
+require('mason').setup()
+require('mason-lspconfig').setup({
   -- Get the desired LSP servers automatically
   -- without needing a manual install action.
   ensure_installed = servers,
@@ -49,7 +55,10 @@ require("mason-lspconfig").setup({
 --
 -- Most of these language configurations will only need to call `setup`,
 -- but I'm not doing that in a loop because each could have a unique setup.
-local lspconfig = require("lspconfig")
+local lspconfig = require('lspconfig')
 
 -- Python
 lspconfig.pyright.setup({})
+
+-- Enable LSP progress UI
+require('fidget').setup({})
