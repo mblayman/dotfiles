@@ -12,6 +12,12 @@ local Plug = vim.fn['plug#']
 -- to declare it.
 vim.call('plug#begin')
 
+-- The configuration plugin for Neovim LSP integration
+--
+-- This plugin provides configuration that integrates Neovim (an LSP client)
+-- with one of the supported LSP servers listed with this plugin.
+Plug 'neovim/nvim-lspconfig'
+
 -- Neovim LSP package manager
 --
 -- This plugin has the job of fetching LSP servers and clients
@@ -22,6 +28,28 @@ vim.call('plug#begin')
 -- That configuration is delegating to other plugins.
 Plug 'williamboman/mason.nvim'
 
+-- Bridge between mason.nvim and lspconfig
+--
+-- This plugin is a compatibility layer that allows mason-installed LSP servers
+-- to have easier configuration with the lspconfig plugin.
+Plug 'williamboman/mason-lspconfig.nvim'
+
 vim.call('plug#end')
 
+local servers = {'pyright'}
+
 require("mason").setup()
+require("mason-lspconfig").setup({
+  -- Get the desired LSP servers automatically
+  -- without needing a manual install action.
+  ensure_installed = servers,
+})
+
+-- LSP server configuration
+--
+-- Most of these language configurations will only need to call `setup`,
+-- but I'm not doing that in a loop because each could have a unique setup.
+local lspconfig = require("lspconfig")
+
+-- Python
+lspconfig.pyright.setup({})
