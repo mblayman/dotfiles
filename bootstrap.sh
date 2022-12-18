@@ -73,6 +73,16 @@ main () {
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         success "Fetched vim-plug."
     fi
+    local nvimplug="$DOTFILES_ROOT/nvim/autoload/plug.vim"
+    if [ -e "$nvimplug" ]; then
+        success "vim-plug is available for Neovim."
+    else
+        curl -fLo "$nvimplug" \
+            --silent \
+            --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        success "Fetched vim-plug."
+    fi
 
     info "Setting up Lua LSP server."
     local lualsp="$DOTFILES_ROOT/nvim/lua-language-server"

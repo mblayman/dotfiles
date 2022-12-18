@@ -64,6 +64,7 @@ vim/.netrwhist
 
 # Neovim
 nvim/lua-language-server
+nvim/autoload
 
 # OS X
 .DS_Store
