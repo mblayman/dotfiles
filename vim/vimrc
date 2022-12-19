@@ -109,8 +109,11 @@ let &colorcolumn=81
 highlight ColorColumn term=standout ctermbg=7
 set backspace=2 " Make backspace work in a sane manner.
 autocmd FileType javascript,lua,html,htmldjango,yaml setlocal ts=2 sw=2 sts=2 expandtab
+" DONE converting to nvim
 set number
+" DONE converting to nvim
 set relativenumber
+" DONE converting to nvim
 set scrolloff=10
 
 " Set dark mode stuff

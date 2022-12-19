@@ -12,11 +12,34 @@ local Plug = vim.fn['plug#']
 -- to declare it.
 vim.call('plug#begin')
 
+-- Neovim LSP completion source
+--
+-- This plugin provides more completion capabilities
+-- that the Neovim client can expose to LSP servers.
+-- The LSP server can then enrich what the completion engine can do.
+Plug 'hrsh7th/cmp-nvim-lsp'
+
+-- Neovim completion engine
+--
+-- This plugin is the core completion engine that can be fed completions
+-- from sources like an LSP server or a snippet plugin.
+Plug 'hrsh7th/nvim-cmp'
+
 -- LSP progress UI
 --
 -- This plugin adds a bit of UI above the status line to show the progress
 -- state of an LSP server if that state is available.
 Plug 'j-hui/fidget.nvim'
+
+-- Snippet engine
+--
+-- This is tool for doing fancy autocomplete of common activities
+-- (e.g., making a function with a standard docstring)
+--
+-- TODO: learn more about this later. For now, nvim-cmp requires a snippet
+-- engine for some reason and that's the only reason why I've included
+-- this plugin.
+Plug 'L3MON4D3/LuaSnip'
 
 -- Guidelines UI for indentation
 --
@@ -29,6 +52,12 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 -- This plugin provides configuration that integrates Neovim (an LSP client)
 -- with one of the supported LSP servers listed with this plugin.
 Plug 'neovim/nvim-lspconfig'
+
+-- LuaSnip completion source connector
+--
+-- This plugin bridges the LuaSnip snippet engine
+-- as a source for the Neovim completion engine.
+Plug 'saadparwaiz1/cmp_luasnip'
 
 -- A dark theme
 Plug 'tanvirtin/monokai.nvim'
@@ -109,11 +138,68 @@ require('mason-lspconfig').setup({
 -- but I'm not doing that in a loop because each could have a unique setup.
 local lspconfig = require('lspconfig')
 
+-- Create the expanded capabilities set so that the LSP servers will know
+-- that the Neovim client can do more.
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 -- Python
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup({
+  capabilities = capabilities,
+})
 
 -- Enable LSP progress UI
 require('fidget').setup({})
+
+-- Completion engine (nvim-cmp)
+--
+-- To make use of all the cool LSP server stuff,
+-- nvim-cmp needs to be configured to use the LSP as a source.
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+
+cmp.setup({
+  -- Tell nvim-cmp how to expand snippets.
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  -- Set the key mappings for the completion engine to track.
+  mapping = cmp.mapping.preset.insert({
+    -- TODO: These mappings with Ctrl do not seem to be working.
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  -- Specify the completion sources.
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+})
 
 -- Theme
 --
