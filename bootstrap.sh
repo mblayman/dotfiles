@@ -121,6 +121,7 @@ main () {
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
 
     info "Manual steps:"
+    info " - Install nerd fonts: brew tap homebrew/cask-fonts && brew install font-ubuntu-mono-nerd-font"
     info " - Open Vim and run :PlugInstall."
     installer="$DOTFILES_ROOT/vim/plugged/YouCompleteMe/install.py"
     info " - Install python-dev library."

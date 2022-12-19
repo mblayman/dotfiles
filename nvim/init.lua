@@ -24,6 +24,9 @@ Plug 'j-hui/fidget.nvim'
 -- with one of the supported LSP servers listed with this plugin.
 Plug 'neovim/nvim-lspconfig'
 
+-- A dark theme
+Plug 'tanvirtin/monokai.nvim'
+
 -- Neovim LSP package manager
 --
 -- This plugin has the job of fetching LSP servers and clients
@@ -41,6 +44,32 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 
 vim.call('plug#end')
+
+-- Global configuration
+--
+-- Do this stuff before loading plugins so that plugins have a consistent behavior.
+
+-- Set the leader key to spacebar.
+--
+-- This is, hands down, one of Vim's superpowers that is possible
+-- because of modal editing.
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Leader commands
+
+-- Quick save
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>')
+
+-- Navigate up, down, left, and right between splits.
+vim.keymap.set('n', '<leader>h', '<c-w>h')
+vim.keymap.set('n', '<leader>j', '<c-w>j')
+vim.keymap.set('n', '<leader>k', '<c-w>k')
+vim.keymap.set('n', '<leader>l', '<c-w>l')
+
+-- Plugin configuration
+--
+-- With the global config done, it's time to load all those cool plugins!
 
 local servers = {'pyright'}
 
@@ -62,3 +91,12 @@ lspconfig.pyright.setup({})
 
 -- Enable LSP progress UI
 require('fidget').setup({})
+
+-- Theme
+--
+-- My theme selection has to work well f.lux. I mostly code at night
+-- so my screen is often a deep amber color. I've found that I need high
+-- contrast themes because the amber haze seems to reduce overall contrast.
+vim.o.termguicolors = true
+local monokai = require('monokai')
+monokai.setup({})
