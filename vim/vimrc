@@ -153,6 +153,7 @@ autocmd BufWrite *.lua call LuaFormat()
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
 
 " Leader commands
+" DONE converting to nvim
 let mapleader = "\<Space>"
 
 " Quick search
@@ -175,12 +176,14 @@ nmap <silent> <Leader>s :TestSuite<CR>
 nmap <silent> <Leader>t :TestNearest<CR>
 
 " Quick save
+" DONE converting to nvim
 nnoremap <Leader>w :w<CR>
 
 " Escape is so far away.
 imap <C-l> <Esc>
 
 " Navigate up, down, left, and right between splits.
+" DONE converting to nvim
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k

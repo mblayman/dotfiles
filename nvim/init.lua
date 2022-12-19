@@ -62,6 +62,23 @@ vim.call('plug#end')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Set the title of the tab to the filename.
+vim.o.title = true
+
+-- Enable line numbers.
+vim.wo.number = true
+
+-- Show relative numbers above and below the current number.
+--
+-- This is useful for now the jump distantce when calculating larger motions.
+vim.wo.relativenumber = true
+
+-- Set the number of reserved lines at the top and bottom before scrolling starts.
+--
+-- This lets me see some context above or below wherever I am so I'm not missing
+-- related information to the line that I'm reading.
+vim.wo.scrolloff = 10
+
 -- Leader commands
 
 -- Quick save
