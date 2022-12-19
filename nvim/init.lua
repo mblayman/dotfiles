@@ -18,6 +18,12 @@ vim.call('plug#begin')
 -- state of an LSP server if that state is available.
 Plug 'j-hui/fidget.nvim'
 
+-- Guidelines UI for indentation
+--
+-- This plugin adds subtle guidelines at indentation stops
+-- so that my eyes can follow the relevant scoping.
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 -- The configuration plugin for Neovim LSP integration
 --
 -- This plugin provides configuration that integrates Neovim (an LSP client)
@@ -100,3 +106,9 @@ require('fidget').setup({})
 vim.o.termguicolors = true
 local monokai = require('monokai')
 monokai.setup({})
+
+-- Indentation guideline UI
+require('indent_blankline').setup({
+  char = '┊',
+  show_trailing_blankline_indent = false,
+})
