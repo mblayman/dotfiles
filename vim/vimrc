@@ -96,7 +96,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 call lh#local_vimrc#munge('whitelist', $HOME)
 call lh#local_vimrc#filter_list('asklist', 'v:val != $HOME')
 
+" DONE does not need to carry over to nvim
 syntax on
+
 filetype plugin indent on
 set expandtab
 set ts=4 sw=4 sts=4
@@ -104,6 +106,7 @@ set list listchars=tab:>-,trail:-
 au BufRead,BufNewFile *.go setlocal nolist
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.hbs set filetype=html
+" DONE converting to nvim
 set title
 let &colorcolumn=81
 highlight ColorColumn term=standout ctermbg=7
