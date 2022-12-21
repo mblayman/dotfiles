@@ -56,6 +56,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 -- with one of the supported LSP servers listed with this plugin.
 Plug 'neovim/nvim-lspconfig'
 
+-- A fancy status line
+Plug 'nvim-lualine/lualine.nvim'
+
 -- A programming language parser
 --
 -- Tree-sitter is a C library design to do parsing of programming languages.
@@ -271,6 +274,16 @@ require('gitsigns').setup({
     delete = { text = '_' },
     topdelete = { text = '‾' },
     changedelete = { text = '~' },
+  },
+})
+
+-- Set lualine as statusline
+require('lualine').setup({
+  options = {
+    icons_enabled = false,
+    theme = 'onedark',
+    component_separators = '|',
+    section_separators = '',
   },
 })
 
