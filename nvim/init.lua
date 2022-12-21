@@ -41,6 +41,9 @@ Plug 'j-hui/fidget.nvim'
 -- this plugin.
 Plug 'L3MON4D3/LuaSnip'
 
+-- Git info the buffer (e.g., gutter info)
+Plug 'lewis6991/gitsigns.nvim'
+
 -- Guidelines UI for indentation
 --
 -- This plugin adds subtle guidelines at indentation stops
@@ -258,6 +261,17 @@ monokai.setup({})
 require('indent_blankline').setup({
   char = '┊',
   show_trailing_blankline_indent = false,
+})
+
+-- Gitsigns configuration
+require('gitsigns').setup({
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+    topdelete = { text = '‾' },
+    changedelete = { text = '~' },
+  },
 })
 
 -- Syntax highlighting and other language specific stuff.
