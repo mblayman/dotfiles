@@ -56,6 +56,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 -- with one of the supported LSP servers listed with this plugin.
 Plug 'neovim/nvim-lspconfig'
 
+-- A comment plugin that works as `gc`.
+Plug 'numToStr/Comment.nvim'
+
 -- A fancy status line
 Plug 'nvim-lualine/lualine.nvim'
 
@@ -86,6 +89,9 @@ Plug 'tpope/vim-fugitive'
 
 -- Fugitive extensions (for Gbrowse GitHub links)
 Plug 'tpope/vim-rhubarb'
+
+-- Detect tabstop and shiftwidth automatically
+Plug 'tpope/vim-sleuth'
 
 -- Neovim LSP package manager
 --
@@ -281,6 +287,7 @@ require('gitsigns').setup({
 require('lualine').setup({
   options = {
     icons_enabled = false,
+    -- This theme is close enough.
     theme = 'onedark',
     component_separators = '|',
     section_separators = '',
@@ -352,3 +359,6 @@ require('nvim-treesitter.configs').setup({
     },
   },
 })
+
+-- Enable the quick comment plugin.
+require('Comment').setup()

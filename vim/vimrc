@@ -42,6 +42,7 @@ Plug 'psf/black'
 Plug 'stefandtw/quickfix-reflector.vim'
 
 " Comment stuff out quickly.
+" DONE converting to nvim
 Plug 'tpope/vim-commentary'
 
 " Smart completion of do/end.
