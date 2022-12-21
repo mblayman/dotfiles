@@ -75,6 +75,12 @@ Plug 'saadparwaiz1/cmp_luasnip'
 -- A dark theme
 Plug 'tanvirtin/monokai.nvim'
 
+-- Git in Vim
+Plug 'tpope/vim-fugitive'
+
+-- Fugitive extensions (for Gbrowse GitHub links)
+Plug 'tpope/vim-rhubarb'
+
 -- Neovim LSP package manager
 --
 -- This plugin has the job of fetching LSP servers and clients

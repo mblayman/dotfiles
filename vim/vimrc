@@ -48,9 +48,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 
 " Git in Vim
+" DONE converting to nvim
 Plug 'tpope/vim-fugitive'
 
 " Fugitive extensions (for Gbrowse GitHub links)
+" DONE converting to nvim
 Plug 'tpope/vim-rhubarb'
 
 " Surround text with tags and quotes.
