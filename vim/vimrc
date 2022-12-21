@@ -13,6 +13,7 @@ Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Search in Vim.
+" DONE converting to nvim
 Plug 'jremmen/vim-ripgrep'
 let g:rg_command = 'rg --vimgrep -S'
 

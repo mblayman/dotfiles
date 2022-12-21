@@ -31,6 +31,9 @@ Plug 'hrsh7th/nvim-cmp'
 -- state of an LSP server if that state is available.
 Plug 'j-hui/fidget.nvim'
 
+-- Search in Vim.
+Plug 'jremmen/vim-ripgrep'
+
 -- Snippet engine
 --
 -- This is tool for doing fancy autocomplete of common activities
@@ -55,6 +58,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 -- This plugin provides configuration that integrates Neovim (an LSP client)
 -- with one of the supported LSP servers listed with this plugin.
 Plug 'neovim/nvim-lspconfig'
+
+-- This is a dependency for telescope.
+Plug 'nvim-lua/plenary.nvim'
 
 -- A comment plugin that works as `gc`.
 Plug 'numToStr/Comment.nvim'
@@ -122,6 +128,8 @@ vim.call('plug#end')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.rg_command = 'rg --vimgrep -S'
+
 -- Set the title of the tab to the filename.
 vim.o.title = true
 
@@ -140,6 +148,9 @@ vim.wo.relativenumber = true
 vim.wo.scrolloff = 10
 
 -- Leader commands
+
+-- Quick search
+vim.keymap.set('n', '<leader>a', ':Rg ')
 
 -- Quick save
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>')
