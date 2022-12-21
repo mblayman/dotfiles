@@ -136,7 +136,7 @@ vim.keymap.set('n', '<leader>l', '<c-w>l')
 --
 -- With the global config done, it's time to load all those cool plugins!
 
-local servers = {'pyright'}
+local servers = {'pyright', 'sumneko_lua'}
 
 require('mason').setup()
 require('mason-lspconfig').setup({
@@ -155,6 +155,31 @@ local lspconfig = require('lspconfig')
 -- that the Neovim client can do more.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+-- Lua
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
+
+lspconfig.sumneko_lua.setup({
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = { enable = false },
+    },
+  },
+})
 
 -- Python
 lspconfig.pyright.setup({

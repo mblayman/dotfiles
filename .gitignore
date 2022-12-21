@@ -63,7 +63,6 @@ vim/plugged/
 vim/.netrwhist
 
 # Neovim
-nvim/lua-language-server
 nvim/autoload
 
 # OS X
