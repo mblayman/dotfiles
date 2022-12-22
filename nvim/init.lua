@@ -134,8 +134,38 @@ vim.g.maplocalleader = ' '
 
 vim.g.rg_command = 'rg --vimgrep -S'
 
+-- Enable break indent
+--
+-- When a line wraps, the wrapped part will indent to the same level as the current line.
+vim.o.breakindent = true
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+-- Set highlight on search
+vim.o.hlsearch = false
+
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Enable mouse mode
+vim.o.mouse = 'a'
+
+-- Always show the gutter, even when there are no problems.
+vim.wo.signcolumn = 'yes'
+
 -- Set the title of the tab to the filename.
 vim.o.title = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Decrease update time
+--
+-- The time (in milliseconds) before writing to the swap file.
+-- I don't know if I actually benefit from this.
+vim.o.updatetime = 250
 
 -- Enable line numbers.
 vim.wo.number = true
@@ -151,6 +181,21 @@ vim.wo.relativenumber = true
 -- related information to the line that I'm reading.
 vim.wo.scrolloff = 10
 
+-- Keymaps
+
+-- Make spacebar a nop when not followed by anything else.
+--
+-- Since spacebar is the leader key, don't do anything when the spacebar is hit
+-- by itself.
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+--
+-- By default, Vim wants to treat a wrapping line as a single line.
+-- Detect if there is line wrap, then go to the wrapped portion if there is.
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
 -- Leader commands
 
 -- Quick search
@@ -164,6 +209,24 @@ vim.keymap.set('n', '<leader>h', '<c-w>h')
 vim.keymap.set('n', '<leader>j', '<c-w>j')
 vim.keymap.set('n', '<leader>k', '<c-w>k')
 vim.keymap.set('n', '<leader>l', '<c-w>l')
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+-- TODO: This doesn't seem to work. I should figure out why.
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
 
 -- Plugin configuration
 --
