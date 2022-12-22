@@ -57,6 +57,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -82,8 +83,3 @@ eval "$(direnv hook zsh)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias emailserve="python -m smtpd -n -c DebuggingServer localhost:1025"
-alias love="/Applications/love.app/Contents/MacOS/love"
-
-alias luamake=/Users/matt/dotfiles/nvim/lua-language-server/3rd/luamake/luamake
