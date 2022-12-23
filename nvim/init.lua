@@ -327,7 +327,12 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = { 'gopls', 'pyright', 'sumneko_lua' }
+local servers = {
+  'gopls', -- Go
+  'pyright', -- Python
+  'sumneko_lua', -- Lua
+  'zls', -- Zig
+}
 
 require('mason').setup()
 require('mason-lspconfig').setup({
@@ -492,7 +497,7 @@ require('lualine').setup({
 -- nvim-treesitter supercharges syntax highlighting with better language support.
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'c', 'go', 'lua', 'python', 'rust', 'toml', 'help' },
+  ensure_installed = { 'c', 'go', 'help', 'lua', 'python', 'rust', 'toml', 'zig' },
 
   highlight = { enable = true },
   indent = { enable = true },
