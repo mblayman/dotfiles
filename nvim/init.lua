@@ -55,6 +55,10 @@ Plug 'L3MON4D3/LuaSnip'
 -- Git info the buffer (e.g., gutter info)
 Plug 'lewis6991/gitsigns.nvim'
 
+-- Local Vim settings per project.
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/local_vimrc'
+
 -- Guidelines UI for indentation
 --
 -- This plugin adds subtle guidelines at indentation stops

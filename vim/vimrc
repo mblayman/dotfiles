@@ -1,9 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Local Vim settings per project.
-Plug 'LucHermitte/lh-vim-lib'
-Plug 'LucHermitte/local_vimrc'
-
 " Catch common weasel words like 'easy' when writing prose in Markdown.
 Plug 'nicholaides/words-to-avoid.vim'
 
