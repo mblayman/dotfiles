@@ -1,15 +1,19 @@
 call plug#begin('~/.vim/plugged')
 
 " LuaFormatter support (i.e., Black for Lua)
+" DONE converting to nvim
 Plug 'andrejlevkovitch/vim-lua-format'
 
 " TOML syntax highlighting
+" DONE converting to nvim
 Plug 'cespare/vim-toml'
 
 " Linters and such.
+" DONE converting to nvim
 Plug 'dense-analysis/ale'
 
 " Go language support
+" DONE converting to nvim
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Search in Vim.
@@ -18,6 +22,7 @@ Plug 'jremmen/vim-ripgrep'
 let g:rg_command = 'rg --vimgrep -S'
 
 " Fast file searching with fzf
+" DONE converting to nvim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -26,9 +31,11 @@ Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/local_vimrc'
 
 " Handlebars syntax highlighting.
+" DONE don't care about this anymore.
 Plug 'mustache/vim-mustache-handlebars'
 
 " LSP support in Neovim.
+" DONE converting to nvim
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
 endif
@@ -37,6 +44,7 @@ endif
 Plug 'nicholaides/words-to-avoid.vim'
 
 " Black formatter
+" DONE converting to nvim
 Plug 'psf/black'
 
 " Make the quickfix window modifiable for large find and replace operations.
@@ -58,6 +66,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " Surround text with tags and quotes.
+" DONE I never think to use this.
 Plug 'tpope/vim-surround'
 
 " Convenience shortcuts for quickly navigating quicklists and such.
@@ -80,18 +89,23 @@ endif
 Plug 'ycm-core/YouCompleteMe'
 
 " Zig language support
+" DONE converting to nvim
 Plug 'ziglang/zig.vim'
 
 call plug#end()
 
+" DONE I never use :grep in Vim.
 if executable('rg')
   set grepprg=rg\ --color=never
 endif
 
+" DONE not needed
 let g:ale_lint_on_text_changed = 'never'
 
+" DONE not needed
 let g:markdown_fenced_languages = ['python']
 
+" DONE not needed
 " Close the preview context helper after leaving insert mode.
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
@@ -104,17 +118,28 @@ call lh#local_vimrc#filter_list('asklist', 'v:val != $HOME')
 syntax on
 
 filetype plugin indent on
+
+" DONE replaced by tpope-sleuth plugin
 set expandtab
 set ts=4 sw=4 sts=4
 set list listchars=tab:>-,trail:-
 au BufRead,BufNewFile *.go setlocal nolist
+
+" DONE not needed
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.hbs set filetype=html
+
 " DONE converting to nvim
 set title
+
+" DONE converting to nvim
 let &colorcolumn=81
 highlight ColorColumn term=standout ctermbg=7
+
+" DONE nvim set this behavior as the sane default.
 set backspace=2 " Make backspace work in a sane manner.
+
+" DONE converting to nvim
 autocmd FileType javascript,lua,html,htmldjango,yaml setlocal ts=2 sw=2 sts=2 expandtab
 " DONE converting to nvim
 set number
@@ -167,9 +192,11 @@ autocmd FileType htmldjango set commentstring={#\ %s\ #}
 let mapleader = "\<Space>"
 
 " Quick search
+" DONE converting to nvim
 nnoremap <Leader>a :Rg 
 
 " Launch fzf
+" DONE converting to nvim
 nnoremap <Leader>c :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
 
@@ -190,6 +217,7 @@ nmap <silent> <Leader>t :TestNearest<CR>
 nnoremap <Leader>w :w<CR>
 
 " Escape is so far away.
+" DONE converting to nvim
 imap <C-l> <Esc>
 
 " Navigate up, down, left, and right between splits.
@@ -200,7 +228,9 @@ nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
 " Go to a definition
+" DONE converting to nvim
 nnoremap <Leader>y :YcmCompleter GoTo<CR>
 
 " Git
+" DONE I never use this
 nnoremap <Leader>gb :Git blame<CR>

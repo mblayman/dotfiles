@@ -147,6 +147,9 @@ vim.g.rg_command = 'rg --vimgrep -S'
 -- When a line wraps, the wrapped part will indent to the same level as the current line.
 vim.o.breakindent = true
 
+-- Set a line at column 81 to give a frame of reference.
+vim.wo.colorcolumn = '81'
+
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
@@ -266,15 +269,21 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').git_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sa', require('telescope.builtin').find_files, { desc = '[S]earch [A]ll files' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- LSP settings.
+
+-- This autocommand group is for attaching a format on save option
+-- to each buffer.
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -304,9 +313,21 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  -- Enable format on write.
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
+  end
 end
 
-local servers = { 'pyright', 'sumneko_lua' }
+local servers = { 'gopls', 'pyright', 'sumneko_lua' }
 
 require('mason').setup()
 require('mason-lspconfig').setup({
@@ -325,6 +346,12 @@ local lspconfig = require('lspconfig')
 -- that the Neovim client can do more.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+-- Go
+lspconfig.gopls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
 -- Lua
 local runtime_path = vim.split(package.path, ';')
@@ -360,7 +387,6 @@ lspconfig.pyright.setup({
 
 -- Enable other tools that can be used by LSP
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require("null-ls")
 
 null_ls.setup({
@@ -368,23 +394,7 @@ null_ls.setup({
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
   },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({
-            bufnr = bufnr,
-            filter = function(c) -- client
-              return c.name == "null-ls"
-            end
-          })
-        end,
-      })
-    end
-  end,
+  on_attach = on_attach,
 })
 
 -- Enable LSP progress UI
@@ -482,7 +492,7 @@ require('lualine').setup({
 -- nvim-treesitter supercharges syntax highlighting with better language support.
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'c', 'go', 'lua', 'python', 'rust', 'help' },
+  ensure_installed = { 'c', 'go', 'lua', 'python', 'rust', 'toml', 'help' },
 
   highlight = { enable = true },
   indent = { enable = true },
