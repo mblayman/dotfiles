@@ -1,29 +1,3 @@
-call plug#begin('~/.vim/plugged')
-
-" Catch common weasel words like 'easy' when writing prose in Markdown.
-Plug 'nicholaides/words-to-avoid.vim'
-
-" Make the quickfix window modifiable for large find and replace operations.
-Plug 'stefandtw/quickfix-reflector.vim'
-
-" Smart completion of do/end.
-Plug 'tpope/vim-endwise'
-
-" Convenience shortcuts for quickly navigating quicklists and such.
-Plug 'tpope/vim-unimpaired'
-
-" Make netrw more awesome.
-Plug 'tpope/vim-vinegar'
-
-" Fix Python autoindent after <CR> following parentheses.
-Plug 'Vimjas/vim-python-pep8-indent'
-
-call plug#end()
-
-" I don't really like folds. Disable them (some plugin is enabling by default
-" on reStructured Text).
-set nofoldenable
-
 " Hide instead of close files when opening a new file while there are unsaved
 " changes
 set nohidden

@@ -73,6 +73,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 -- with one of the supported LSP servers listed with this plugin.
 Plug 'neovim/nvim-lspconfig'
 
+-- Catch common weasel words like 'easy' when writing prose in Markdown.
+Plug 'nicholaides/words-to-avoid.vim'
+
 -- This is a dependency for telescope.
 Plug 'nvim-lua/plenary.nvim'
 
@@ -105,8 +108,14 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 -- as a source for the Neovim completion engine.
 Plug 'saadparwaiz1/cmp_luasnip'
 
+-- Make the quickfix window modifiable for large find and replace operations.
+Plug 'stefandtw/quickfix-reflector.vim'
+
 -- A dark theme
 Plug 'tanvirtin/monokai.nvim'
+
+-- Smart completion of do/end.
+Plug 'tpope/vim-endwise'
 
 -- Git in Vim
 Plug 'tpope/vim-fugitive'
@@ -116,6 +125,12 @@ Plug 'tpope/vim-rhubarb'
 
 -- Detect tabstop and shiftwidth automatically
 Plug 'tpope/vim-sleuth'
+
+-- Convenience shortcuts for quickly navigating quicklists and such.
+Plug 'tpope/vim-unimpaired'
+
+-- Make netrw more awesome.
+Plug 'tpope/vim-vinegar'
 
 -- Integrate a test runner.
 Plug 'vim-test/vim-test'
@@ -514,7 +529,7 @@ require('lualine').setup({
 -- nvim-treesitter supercharges syntax highlighting with better language support.
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'c', 'go', 'help', 'lua', 'python', 'rust', 'toml', 'zig' },
+  ensure_installed = { 'c', 'go', 'help', 'lua', 'markdown', 'python', 'rust', 'toml', 'zig' },
 
   highlight = { enable = true },
   indent = { enable = true },
