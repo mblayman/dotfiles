@@ -42,6 +42,12 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 -- Search in Vim.
 Plug 'jremmen/vim-ripgrep'
 
+-- Allow local config files
+--
+-- This feature puts a guard on `exrc` so that Neovim is not unconditionally
+-- sourcing random rc files.
+Plug 'klen/nvim-config-local'
+
 -- Snippet engine
 --
 -- This is tool for doing fancy autocomplete of common activities
@@ -54,10 +60,6 @@ Plug 'L3MON4D3/LuaSnip'
 
 -- Git info the buffer (e.g., gutter info)
 Plug 'lewis6991/gitsigns.nvim'
-
--- Local Vim settings per project.
-Plug 'LucHermitte/lh-vim-lib'
-Plug 'LucHermitte/local_vimrc'
 
 -- Guidelines UI for indentation
 --
@@ -567,6 +569,7 @@ require('nvim-treesitter.configs').setup({
 -- Enable the quick comment plugin.
 require('Comment').setup()
 
--- local_vimrc is constantly asking if I want to use a local_vimrc
--- every time I commit. This is super annoying.
-vim.call('lh#local_vimrc#munge', 'whitelist', vim.env.HOME)
+require('config-local').setup({
+  -- Support the local_vimrc plugin filename that I used to use.
+  config_files = { '_vimrc_local.vim', '.vimrc', '.vimrc.lua' },
+})
