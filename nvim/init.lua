@@ -335,7 +335,9 @@ local servers = {
   'gopls', -- Go
   'pyright', -- Python
   'sumneko_lua', -- Lua
-  'zls', -- Zig
+  -- zls is not installing successfully (maybe it takes too long to compile)
+  -- so I'm disabling it until the future where I actually use the language.
+  -- 'zls', -- Zig
 }
 
 require('mason').setup()
@@ -564,3 +566,7 @@ require('nvim-treesitter.configs').setup({
 
 -- Enable the quick comment plugin.
 require('Comment').setup()
+
+-- local_vimrc is constantly asking if I want to use a local_vimrc
+-- every time I commit. This is super annoying.
+vim.call('lh#local_vimrc#munge', 'whitelist', vim.env.HOME)

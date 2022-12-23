@@ -27,11 +27,6 @@ endif
 
 call plug#end()
 
-" local_vimrc is constantly asking if I want to use a local_vimrc
-" every time I commit. This is super annoying.
-call lh#local_vimrc#munge('whitelist', $HOME)
-call lh#local_vimrc#filter_list('asklist', 'v:val != $HOME')
-
 " I don't really like folds. Disable them (some plugin is enabling by default
 " on reStructured Text).
 set nofoldenable
