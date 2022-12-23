@@ -31,6 +31,14 @@ Plug 'hrsh7th/nvim-cmp'
 -- state of an LSP server if that state is available.
 Plug 'j-hui/fidget.nvim'
 
+-- Include other LSP sources
+--
+-- This plugin makes it possible to use external tools and treat them
+-- as sources that will be plugged into the LSP ecosystem.
+-- By using this in combination with Mason, I can add tools like Black
+-- without installing a dedicated Black plugin.
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
 -- Search in Vim.
 Plug 'jremmen/vim-ripgrep'
 
@@ -348,6 +356,35 @@ lspconfig.sumneko_lua.setup({
 lspconfig.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
+})
+
+-- Enable other tools that can be used by LSP
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.isort,
+  },
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            filter = function(c) -- client
+              return c.name == "null-ls"
+            end
+          })
+        end,
+      })
+    end
+  end,
 })
 
 -- Enable LSP progress UI
