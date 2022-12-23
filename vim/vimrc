@@ -18,13 +18,6 @@ Plug 'tpope/vim-vinegar'
 " Fix Python autoindent after <CR> following parentheses.
 Plug 'Vimjas/vim-python-pep8-indent'
 
-" Integrate a test runner.
-Plug 'vim-test/vim-test'
-
-if has('nvim')
-    let test#strategy = 'neovim'
-endif
-
 call plug#end()
 
 " I don't really like folds. Disable them (some plugin is enabling by default
@@ -43,9 +36,6 @@ set shell=/bin/bash
 " Assume HTML files are Django templates for simplicity.
 autocmd BufNewFile,BufRead *.html set filetype=htmldjango
 
-" Handlebars syntax highlighting uses a Mustache plugin.
-autocmd BufNewFile,BufRead *.hbs set filetype=mustache
-
 " Run LuaFormatter on save.
 autocmd BufWrite *.lua call LuaFormat()
 
@@ -55,11 +45,3 @@ autocmd FileType htmldjango set commentstring={#\ %s\ #}
 " Insert pdb.
 nnoremap <Leader>d oimport pdb; pdb.set_trace()<Esc>
 
-" Run a test file.
-nmap <silent> <Leader>f :TestFile<CR>
-
-" Run a test suite.
-nmap <silent> <Leader>s :TestSuite<CR>
-
-" Run a test.
-nmap <silent> <Leader>t :TestNearest<CR>

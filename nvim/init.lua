@@ -117,6 +117,9 @@ Plug 'tpope/vim-rhubarb'
 -- Detect tabstop and shiftwidth automatically
 Plug 'tpope/vim-sleuth'
 
+-- Integrate a test runner.
+Plug 'vim-test/vim-test'
+
 -- Neovim LSP package manager
 --
 -- This plugin has the job of fetching LSP servers and clients
@@ -214,6 +217,12 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Leader commands
+
+-- Run a test file.
+vim.keymap.set('n', '<leader>f', ':TestFile<cr>', { silent = true })
+
+-- Run a test.
+vim.keymap.set('n', '<leader>t', ':TestNearest<cr>', { silent = true })
 
 -- Quick search
 vim.keymap.set('n', '<leader>a', ':Rg ')
