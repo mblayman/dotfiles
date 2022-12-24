@@ -40,7 +40,6 @@ main () {
     check_for_tool "git"
     check_for_tool "nvim"
     check_for_tool "starship"
-    check_for_tool "vim"
     # ripgrep
     check_for_tool "rg"
     success "All required tools are installed."
@@ -60,20 +59,12 @@ main () {
         success "Fetched Oh My Zsh."
     fi
 
-    info "Bootstrapping Vim."
-    local vimplug="$DOTFILES_ROOT/vim/autoload/plug.vim"
+    info "Bootstrapping Neovim."
+    local vimplug="$DOTFILES_ROOT/nvim/autoload/plug.vim"
     if [ -e "$vimplug" ]; then
-        success "vim-plug is available."
-    else
-        curl -fLo "$vimplug" --silent \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        success "Fetched vim-plug."
-    fi
-    local nvimplug="$DOTFILES_ROOT/nvim/autoload/plug.vim"
-    if [ -e "$nvimplug" ]; then
         success "vim-plug is available for Neovim."
     else
-        curl -fLo "$nvimplug" \
+        curl -fLo "$vimplug" \
             --silent \
             --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -90,7 +81,6 @@ main () {
     fi
 
     info "Symlink ALL THE THINGS!"
-    link "$DOTFILES_ROOT/vim" "$HOME/.vim"
     link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
     link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
     link "$DOTFILES_ROOT/pip.conf" "$HOME/.pip/pip.conf"
@@ -102,10 +92,7 @@ main () {
 
     info "Manual steps:"
     info " - Install nerd fonts: brew tap homebrew/cask-fonts && brew install font-ubuntu-mono-nerd-font"
-    info " - Open Vim and run :PlugInstall."
-    installer="$DOTFILES_ROOT/vim/plugged/YouCompleteMe/install.py"
-    info " - Install python-dev library."
-    info " - Compile YouCompleteMe with $installer"
+    info " - Open Neovim and run :PlugInstall."
     success "You're golden!"
 }
 

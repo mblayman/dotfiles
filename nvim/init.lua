@@ -177,6 +177,9 @@ vim.wo.colorcolumn = '81'
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- Hide instead of close files when opening a new file while there are unsaved changes
+vim.o.hidden = false
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -186,6 +189,11 @@ vim.o.smartcase = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
+
+-- OS X does some weird stuff to PATH on zsh that messes with venvs.
+-- Using bash is a safe alternative and I don't really need the power
+-- of zsh through Vim.
+vim.o.shell = '/bin/bash'
 
 -- Always show the gutter, even when there are no problems.
 vim.wo.signcolumn = 'yes'
@@ -244,6 +252,9 @@ vim.keymap.set('n', '<leader>a', ':Rg ')
 
 -- Quick save
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>')
+
+-- Insert pdb.
+vim.keymap.set('n', '<leader>d', 'obreakpoint()<esc>')
 
 -- Navigate up, down, left, and right between splits.
 vim.keymap.set('n', '<leader>h', '<c-w>h')
@@ -409,7 +420,13 @@ lspconfig.sumneko_lua.setup({
       diagnostics = {
         globals = { 'vim' },
       },
-      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      workspace = {
+        -- Tell the language server to stop prompting me
+        -- to configure my project as a LOVE project.
+        checkThirdParty = false,
+
+        library = vim.api.nvim_get_runtime_file('', true)
+      },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = { enable = false },
     },
@@ -428,6 +445,10 @@ local null_ls = require("null-ls")
 
 null_ls.setup({
   sources = {
+    -- Lua
+    null_ls.builtins.formatting.lua_format,
+
+    -- Python
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
   },
@@ -592,6 +613,9 @@ require('nvim-treesitter.configs').setup({
 
 -- Enable the quick comment plugin.
 require('Comment').setup()
+local ft = require('Comment.ft')
+-- The default style is an HTML comment. This is a Django template comment.
+ft.set('htmldjango', '{# %s #}')
 
 require('config-local').setup({
   -- Support the local_vimrc plugin filename that I used to use.
