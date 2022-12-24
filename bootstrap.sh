@@ -37,16 +37,11 @@ main () {
     check_for_tool "bat"
     check_for_tool "direnv"
     check_for_tool "fzf"
-    check_for_tool "vim"
-    check_for_tool "nvim"
     check_for_tool "git"
+    check_for_tool "nvim"
+    check_for_tool "starship"
     # ripgrep
     check_for_tool "rg"
-    # cmake is a build dependency for YouCompleteMe.
-    check_for_tool "cmake"
-    # To build the Lua LSP server
-    check_for_tool "ninja"
-    info "You may need to install virtualenvwrapper."
     success "All required tools are installed."
 
     info "Boostrapping Zsh."
@@ -64,31 +59,16 @@ main () {
         success "Fetched Oh My Zsh."
     fi
 
-    info "Bootstrapping Vim."
-    local vimplug="$DOTFILES_ROOT/vim/autoload/plug.vim"
+    info "Bootstrapping Neovim."
+    local vimplug="$DOTFILES_ROOT/nvim/autoload/plug.vim"
     if [ -e "$vimplug" ]; then
-        success "vim-plug is available."
+        success "vim-plug is available for Neovim."
     else
-        curl -fLo "$vimplug" --silent \
+        curl -fLo "$vimplug" \
+            --silent \
+            --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         success "Fetched vim-plug."
-    fi
-
-    info "Setting up Lua LSP server."
-    local lualsp="$DOTFILES_ROOT/nvim/lua-language-server"
-    if [ -e "$lualsp" ]; then
-        success "Lua LSP server is available."
-    else
-        git clone --depth=1 --quiet \
-            https://github.com/sumneko/lua-language-server "$lualsp"
-        cd "$lualsp"
-        git submodule update --init --recursive
-        cd 3rd/luamake
-        ./compile/install.sh
-        cd ../..
-        ./3rd/luamake/luamake rebuild
-        cd "$DOTFILES_ROOT"
-        success "Fetched Lua LSP server."
     fi
 
     info "Make Zee Deerectories!"
@@ -101,7 +81,6 @@ main () {
     fi
 
     info "Symlink ALL THE THINGS!"
-    link "$DOTFILES_ROOT/vim" "$HOME/.vim"
     link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
     link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
     link "$DOTFILES_ROOT/pip.conf" "$HOME/.pip/pip.conf"
@@ -109,12 +88,11 @@ main () {
     link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
     mkdir -p "$HOME/.config"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
+    link "$DOTFILES_ROOT/starship.toml" "$HOME/.config/starship.toml"
 
     info "Manual steps:"
-    info " - Open Vim and run :PlugInstall."
-    installer="$DOTFILES_ROOT/vim/plugged/YouCompleteMe/install.py"
-    info " - Install python-dev library."
-    info " - Compile YouCompleteMe with $installer"
+    info " - Install nerd fonts: brew tap homebrew/cask-fonts && brew install font-ubuntu-mono-nerd-font"
+    info " - Open Neovim and run :PlugInstall."
     success "You're golden!"
 }
 
