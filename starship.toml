@@ -1,6 +1,10 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
+# The default is 500ms, but I had a git command timeout
+# when navigating to a directory and it launched a warning.
+# That's annoying.
+command_timeout = 1000
 
 [aws]
 disabled = true
