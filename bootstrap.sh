@@ -11,11 +11,6 @@ set -e
 
 source "$DOTFILES_ROOT/lib/logging.sh"
 
-check_for_tool () {
-    declare tool="$1"
-    hash "$tool" 2>/dev/null || failure "$tool is not installed."
-}
-
 link () {
     declare src="$1" dest="$2"
     if [ -e "$dest" ]; then
@@ -33,16 +28,7 @@ link () {
 main () {
     info "Let's get this party started!"
 
-    info "Check for all the required tools."
-    check_for_tool "bat"
-    check_for_tool "direnv"
-    check_for_tool "fzf"
-    check_for_tool "git"
-    check_for_tool "nvim"
-    check_for_tool "starship"
-    # ripgrep
-    check_for_tool "rg"
-    success "All required tools are installed."
+    brew bundle --file $DOTFILES_ROOT/Brewfile
 
     info "Boostrapping Zsh."
     if [[ $SHELL == "/bin/zsh" ]]; then
@@ -90,9 +76,19 @@ main () {
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
     link "$DOTFILES_ROOT/starship.toml" "$HOME/.config/starship.toml"
 
-    info "Manual steps:"
-    info " - Install nerd fonts: brew tap homebrew/cask-fonts && brew install font-ubuntu-mono-nerd-font"
-    info " - Open Neovim and run :PlugInstall."
+    info "Watch out for VPN issues!"
+    info "Install Neovim plugins."
+    nvim --headless +PlugInstall +q
+
+    # iTerm2 config
+    # Appearance > Tabs > Uncheck "Show activity indicator"
+    # Profiles > General > Radio "Reuse previous session's directory"
+    # Profiles > Colors > Color Presets... > Import and Use "Monokai Remastered"
+    # Profiles > Text > Font > Use "UbuntuMono Nerd Font Mono" at 14pt
+    # Profiles > Terminal > Check "Silence bell"
+
+    info "Check your iTerm2 configuration."
+
     success "You're golden!"
 }
 
