@@ -6,6 +6,7 @@ brew "docker"
 brew "fzf"
 brew "git"
 brew "go"
+brew "hub"
 # Dependency for pyright LSP
 brew "node"
 brew "nvim"
