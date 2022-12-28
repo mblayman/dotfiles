@@ -2,6 +2,7 @@ tap "homebrew/cask-fonts"
 
 brew "bat"
 brew "direnv"
+brew "docker"
 brew "fzf"
 brew "git"
 brew "go"
