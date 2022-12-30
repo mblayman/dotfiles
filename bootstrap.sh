@@ -83,6 +83,8 @@ main () {
     # iTerm2 config
     # Appearance > Tabs > Uncheck "Show activity indicator"
     # Appearance > Tabs > Uncheck "Show new-output indicator"
+    # Keys > Page Down to just Page Down
+    # Keys > Page Up to just Page Up
     # Profiles > General > Radio "Reuse previous session's directory"
     # Profiles > Colors > Color Presets... > Import and Use "Monokai Remastered"
     # Profiles > Text > Font > Use "UbuntuMono Nerd Font Mono" at 14pt
