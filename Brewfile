@@ -10,6 +10,7 @@ brew "hub"
 brew "node"
 brew "nvim"
 brew "starship"
+brew "tree"
 brew "rg"
 # Dependency for Neovim Mason
 brew "wget"
