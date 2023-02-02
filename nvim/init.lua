@@ -301,7 +301,9 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><space>', function()
+  require('telescope.builtin').buffers({ sort_lastused = true })
+end, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -550,7 +552,7 @@ require('lualine').setup({
 -- nvim-treesitter supercharges syntax highlighting with better language support.
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'c', 'go', 'help', 'lua', 'markdown', 'python', 'rust', 'toml', 'zig' },
+  ensure_installed = { 'c', 'go', 'graphql', 'help', 'lua', 'markdown', 'python', 'rust', 'toml', 'zig' },
 
   highlight = { enable = true },
   indent = { enable = true },
