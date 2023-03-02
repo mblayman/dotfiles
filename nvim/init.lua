@@ -86,15 +86,15 @@ Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 
 -- Fuzzy finder
-Plug('nvim-telescope/telescope.nvim', {tag = '0.1.0'})
-Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
+Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
+Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 
 -- A programming language parser
 --
 -- Tree-sitter is a C library design to do parsing of programming languages.
 -- It can do incremental parsing and builds a concrete syntax tree,
 -- so it is well suited to be a parser for code in an editor like Neovim.
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
 -- Syntax-aware text objects
 --
@@ -230,24 +230,24 @@ vim.wo.scrolloff = 10
 --
 -- Since spacebar is the leader key, don't do anything when the spacebar is hit
 -- by itself.
-vim.keymap.set({'n', 'v'}, '<Space>', '<Nop>', {silent = true})
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
 --
 -- By default, Vim wants to treat a wrapping line as a single line.
 -- Detect if there is line wrap, then go to the wrapped portion if there is.
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'",
-               {expr = true, silent = true})
+    { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'",
-               {expr = true, silent = true})
+    { expr = true, silent = true })
 
 -- Leader commands
 
 -- Run a test file.
-vim.keymap.set('n', '<leader>f', ':TestFile<cr>', {silent = true})
+vim.keymap.set('n', '<leader>f', ':TestFile<cr>', { silent = true })
 
 -- Run a test.
-vim.keymap.set('n', '<leader>t', ':TestNearest<cr>', {silent = true})
+vim.keymap.set('n', '<leader>t', ':TestNearest<cr>', { silent = true })
 
 -- Quick search
 vim.keymap.set('n', '<leader>a', ':Rg ')
@@ -274,7 +274,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- See `:help vim.highlight.on_yank()`
 -- TODO: This doesn't seem to work. I should figure out why.
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight',
-                                                    {clear = true})
+    { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank() end,
     group = highlight_group,
@@ -287,7 +287,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- telescope configuration
 require('telescope').setup {
-    defaults = {mappings = {i = {['<C-u>'] = false, ['<C-d>'] = false}}}
+    defaults = { mappings = { i = { ['<C-u>'] = false, ['<C-d>'] = false } } }
 }
 
 -- Enable telescope fzf native, if installed
@@ -295,36 +295,36 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
-               {desc = '[?] Find recently opened files'})
+    { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers,
-               {desc = '[ ] Find existing buffers'})
+    { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
     require('telescope.builtin').current_buffer_fuzzy_find(require(
-                                                               'telescope.themes').get_dropdown {
+        'telescope.themes').get_dropdown {
         winblend = 10,
         previewer = false
     })
-end, {desc = '[/] Fuzzily search in current buffer]'})
+end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').git_files,
-               {desc = '[S]earch [F]iles'})
+    { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sa', require('telescope.builtin').find_files,
-               {desc = '[S]earch [A]ll files'})
+    { desc = '[S]earch [A]ll files' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags,
-               {desc = '[S]earch [H]elp'})
+    { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string,
-               {desc = '[S]earch current [W]ord'})
+    { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep,
-               {desc = '[S]earch by [G]rep'})
+    { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,
-               {desc = '[S]earch [D]iagnostics'})
+    { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>ss',
-               require('telescope.builtin').lsp_document_symbols,
-               {desc = '[S]earch [S]ymbols'})
+    require('telescope.builtin').lsp_document_symbols,
+    { desc = '[S]earch [S]ymbols' })
 vim.keymap.set('n', '<leader>sk',
-               require('telescope.builtin').lsp_dynamic_workspace_symbols,
-               {desc = '[S]earch Wor[k]space symbols'})
+    require('telescope.builtin').lsp_dynamic_workspace_symbols,
+    { desc = '[S]earch Wor[k]space symbols' })
 
 -- LSP settings.
 
@@ -337,7 +337,7 @@ local on_attach = function(client, bufnr)
     local nmap = function(keys, func, desc)
         if desc then desc = 'LSP: ' .. desc end
 
-        vim.keymap.set('n', keys, func, {buffer = bufnr, desc = desc})
+        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -345,14 +345,14 @@ local on_attach = function(client, bufnr)
 
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references,
-         '[G]oto [R]eferences')
+        '[G]oto [R]eferences')
     nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
     nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols,
-         '[D]ocument [S]ymbols')
+        '[D]ocument [S]ymbols')
     nmap('<leader>ws',
-         require('telescope.builtin').lsp_dynamic_workspace_symbols,
-         '[W]orkspace [S]ymbols')
+        require('telescope.builtin').lsp_dynamic_workspace_symbols,
+        '[W]orkspace [S]ymbols')
 
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -363,17 +363,17 @@ local on_attach = function(client, bufnr)
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format',
-                                         function(_) vim.lsp.buf.format() end, {
+        function(_) vim.lsp.buf.format() end, {
         desc = 'Format current buffer with LSP'
     })
 
     -- Enable format on write.
     if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
             buffer = bufnr,
-            callback = function() vim.lsp.buf.format({bufnr = bufnr}) end
+            callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end
         })
     end
 end
@@ -407,10 +407,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- C
-lspconfig.clangd.setup({capabilities = capabilities, on_attach = on_attach})
+lspconfig.clangd.setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- Go
-lspconfig.gopls.setup({capabilities = capabilities, on_attach = on_attach})
+lspconfig.gopls.setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- Lua
 local runtime_path = vim.split(package.path, ';')
@@ -428,7 +428,7 @@ lspconfig.sumneko_lua.setup({
                 -- Setup your lua path
                 path = runtime_path
             },
-            diagnostics = {globals = {'vim'}},
+            diagnostics = { globals = { 'vim' } },
             workspace = {
                 -- Tell the language server to stop prompting me
                 -- to configure my project as a LOVE project.
@@ -437,13 +437,13 @@ lspconfig.sumneko_lua.setup({
                 library = vim.api.nvim_get_runtime_file('', true)
             },
             -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {enable = false}
+            telemetry = { enable = false }
         }
     }
 })
 
 -- Python
-lspconfig.pyright.setup({capabilities = capabilities, on_attach = on_attach})
+lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
 
 -- Enable other tools that can be used by LSP
 
@@ -469,7 +469,7 @@ local luasnip = require 'luasnip'
 
 cmp.setup({
     -- Tell nvim-cmp how to expand snippets.
-    snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
+    snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
     -- Set the key mappings for the completion engine to track.
     mapping = cmp.mapping.preset.insert({
         -- TODO: These mappings with Ctrl do not seem to be working.
@@ -488,7 +488,7 @@ cmp.setup({
             else
                 fallback()
             end
-        end, {'i', 's'}),
+        end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -497,10 +497,10 @@ cmp.setup({
             else
                 fallback()
             end
-        end, {'i', 's'})
+        end, { 'i', 's' })
     }),
     -- Specify the completion sources.
-    sources = {{name = 'nvim_lsp'}, {name = 'luasnip'}}
+    sources = { { name = 'nvim_lsp' }, { name = 'luasnip' } }
 })
 
 -- Theme
@@ -521,11 +521,11 @@ require('indent_blankline').setup({
 -- Gitsigns configuration
 require('gitsigns').setup({
     signs = {
-        add = {text = '+'},
-        change = {text = '~'},
-        delete = {text = '_'},
-        topdelete = {text = '‾'},
-        changedelete = {text = '~'}
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' }
     }
 })
 
@@ -546,11 +546,11 @@ require('lualine').setup({
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require('nvim-treesitter.configs').setup({
     ensure_installed = {
-        'c', 'go', 'help', 'lua', 'markdown', 'python', 'rust', 'toml', 'zig'
+        'c', 'go', 'graphql', 'help', 'lua', 'markdown', 'python', 'rust', 'toml', 'zig'
     },
 
-    highlight = {enable = true},
-    indent = {enable = true},
+    highlight = { enable = true },
+    indent = { enable = true },
     incremental_selection = {
         enable = true,
         keymaps = {
@@ -598,8 +598,8 @@ require('nvim-treesitter.configs').setup({
         },
         swap = {
             enable = true,
-            swap_next = {['<leader>s'] = '@parameter.inner'},
-            swap_previous = {['<leader>S'] = '@parameter.inner'}
+            swap_next = { ['<leader>s'] = '@parameter.inner' },
+            swap_previous = { ['<leader>S'] = '@parameter.inner' }
         }
     }
 })
@@ -612,5 +612,5 @@ ft.set('htmldjango', '{# %s #}')
 
 require('config-local').setup({
     -- Support the local_vimrc plugin filename that I used to use.
-    config_files = {'_vimrc_local.vim', '.vimrc', '.vimrc.lua'}
+    config_files = { '_vimrc_local.vim', '.vimrc', '.vimrc.lua' }
 })
