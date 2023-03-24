@@ -13,3 +13,5 @@
 	insteadOf = https://github.com/ConsultingMD
 [init]
 	templateDir = /Users/matt.layman/.ih/git-template
+[alias]
+    gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
