@@ -382,10 +382,8 @@ local servers = {
     'clangd', -- C
     'gopls', -- Go
     'pyright', -- Python
-    'sumneko_lua' -- Lua
-    -- zls is not installing successfully (maybe it takes too long to compile)
-    -- so I'm disabling it until the future where I actually use the language.
-    -- 'zls', -- Zig
+    'sumneko_lua', -- Lua
+    'zls' -- Zig
 }
 
 require('mason').setup()
@@ -444,6 +442,9 @@ lspconfig.sumneko_lua.setup({
 
 -- Python
 lspconfig.pyright.setup({capabilities = capabilities, on_attach = on_attach})
+
+-- Zig
+lspconfig.zls.setup({capabilities = capabilities, on_attach = on_attach})
 
 -- Enable other tools that can be used by LSP
 
