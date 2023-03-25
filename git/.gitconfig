@@ -7,3 +7,5 @@
 	default = simple
 [pager]
     branch = false
+[pull]
+	rebase = true
