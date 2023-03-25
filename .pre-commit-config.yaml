@@ -1,0 +1,5 @@
+repos:
+- repo: https://github.com/mblayman/LuaFormatter
+  rev: "ad94bea01ca027ca46541af727e15d002aa5ce74"
+  hooks:
+  - id: luaformatter
