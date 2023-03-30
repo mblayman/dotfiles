@@ -410,6 +410,7 @@ lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
   settings = {
     Lua = {
+      format = {enable = false},
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT)
         version = "LuaJIT",
@@ -421,7 +422,6 @@ lspconfig.sumneko_lua.setup({
         -- Tell the language server to stop prompting me
         -- to configure my project as a LOVE project.
         checkThirdParty = false,
-
         library = vim.api.nvim_get_runtime_file("", true),
       },
       -- Do not send telemetry data containing a randomized but unique identifier
@@ -443,7 +443,8 @@ local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.lua_format, -- Lua
-    null_ls.builtins.formatting.black, null_ls.builtins.formatting.isort, -- Python
+    null_ls.builtins.formatting.black, -- Python
+    null_ls.builtins.formatting.isort, -- Python
   },
   on_attach = on_attach,
 })
@@ -536,7 +537,6 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c", "go", "graphql", "help", "lua", "markdown", "python", "rust", "toml", "zig",
   },
-
   highlight = {enable = true},
   indent = {enable = true},
   incremental_selection = {
@@ -548,7 +548,6 @@ require("nvim-treesitter.configs").setup({
       node_decremental = "<c-backspace>",
     },
   },
-
   -- Configuration for the nvim-treesitter-textobjects plugin
   textobjects = {
     select = {
