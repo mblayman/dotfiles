@@ -589,3 +589,6 @@ require("config-local").setup({
   -- Support the local_vimrc plugin filename that I used to use.
   config_files = {"_vimrc_local.vim", ".vimrc", ".vimrc.lua"},
 })
+
+-- Configuration for vim-test.
+vim.g["test#custom_runners"] = {lua = {"luatest"}}
