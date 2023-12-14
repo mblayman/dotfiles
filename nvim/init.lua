@@ -86,7 +86,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 
 -- Fuzzy finder
-Plug('nvim-telescope/telescope.nvim', { tag = '0.1.0' })
+Plug 'nvim-telescope/telescope.nvim'
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 
 -- A programming language parser
@@ -519,10 +519,9 @@ vim.o.termguicolors = true
 local monokai = require('monokai')
 monokai.setup({})
 
--- Indentation guideline UI
-require('indent_blankline').setup({
-  char = '┊',
-  show_trailing_blankline_indent = false,
+-- Indentation guideline UI (indent-blankline)
+require('ibl').setup({
+  indent = { char = '┊' },
 })
 
 -- Gitsigns configuration
