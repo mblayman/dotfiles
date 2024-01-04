@@ -371,9 +371,9 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
-  'gopls', -- Go
+  'gopls',   -- Go
   'pyright', -- Python
-  'lua_ls', -- Lua
+  'lua_ls',  -- Lua
   -- zls is not installing successfully (maybe it takes too long to compile)
   -- so I'm disabling it until the future where I actually use the language.
   -- 'zls', -- Zig
@@ -551,7 +551,10 @@ require('lualine').setup({
 -- nvim-treesitter supercharges syntax highlighting with better language support.
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'c', 'go', 'graphql', 'help', 'lua', 'markdown', 'python', 'rust', 'toml', 'zig' },
+  ensure_installed = { 'c', 'go', 'graphql', 'lua', 'markdown', 'python', 'rust', 'toml', 'vimdoc', 'zig' },
+  auto_install = true,
+  ignore_install = {},
+  sync_install = false,
 
   highlight = { enable = true },
   indent = { enable = true },
