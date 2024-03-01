@@ -1,5 +1,6 @@
 # Neovim
-nvim/autoload
+nvim/autoload/*
+!nvim/autoload/test
 
 # OS X
 .DS_Store

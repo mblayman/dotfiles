@@ -3,6 +3,8 @@
 	email = matthewlayman@gmail.com
 [color]
 	ui = true
+[pull]
+	rebase = true
 [push]
 	default = simple
 [pager]
