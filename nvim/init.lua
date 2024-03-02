@@ -86,7 +86,7 @@ Plug "numToStr/Comment.nvim"
 Plug "nvim-lualine/lualine.nvim"
 
 -- Fuzzy finder
-Plug("nvim-telescope/telescope.nvim", {tag = "0.1.0"})
+Plug("nvim-telescope/telescope.nvim")
 Plug("nvim-telescope/telescope-fzf-native.nvim", {["do"] = "make"})
 
 -- A programming language parser
@@ -504,8 +504,8 @@ vim.o.termguicolors = true
 local monokai = require("monokai")
 monokai.setup({})
 
--- Indentation guideline UI
-require("indent_blankline").setup({char = "┊", show_trailing_blankline_indent = false})
+-- Indentation guideline UI (indent-blankline)
+require("ibl").setup({indent = {char = "┊"}})
 
 -- Gitsigns configuration
 require("gitsigns").setup({
@@ -535,8 +535,12 @@ require("lualine").setup({
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
-    "c", "go", "graphql", "help", "lua", "markdown", "python", "rust", "toml", "zig",
+    "c", "go", "graphql", "lua", "markdown", "python", "rust", "toml", "vimdoc", "zig",
   },
+  auto_install = true,
+  ignore_install = {},
+  sync_install = false,
+
   highlight = {enable = true},
   indent = {enable = true},
   incremental_selection = {
