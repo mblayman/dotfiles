@@ -100,58 +100,10 @@ vim.g.maplocalleader = " "
 vim.g.rg_command = "rg --vimgrep -S"
 
 require("mblayman/options")
+require("mblayman/keymaps")
 require("mblayman/lazy_bootstrap")
 require("mblayman/lazy_init")
 
--- -- Keymaps
---
--- -- Make spacebar a noop when not followed by anything else.
--- --
--- -- Since spacebar is the leader key, don't do anything when the spacebar is hit
--- -- by itself.
--- vim.keymap.set({"n", "v"}, "<Space>", "<Nop>", {silent = true})
---
--- -- Remap for dealing with word wrap
--- --
--- -- By default, Vim wants to treat a wrapping line as a single line.
--- -- Detect if there is line wrap, then go to the wrapped portion if there is.
--- vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
--- vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
---
--- -- Leader commands
---
--- -- Quick save
--- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>")
---
--- -- Insert pdb.
--- vim.keymap.set("n", "<leader>d", "obreakpoint()<esc>")
---
--- -- Navigate up, down, left, and right between splits.
--- vim.keymap.set("n", "<leader>h", "<c-w>h")
--- vim.keymap.set("n", "<leader>j", "<c-w>j")
--- vim.keymap.set("n", "<leader>k", "<c-w>k")
--- vim.keymap.set("n", "<leader>l", "<c-w>l")
---
--- -- Diagnostic keymaps
--- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
--- vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
--- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
--- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
---
--- -- [[ Highlight on yank ]]
--- -- See `:help vim.highlight.on_yank()`
--- -- TODO: This doesn't seem to work. I should figure out why.
--- local highlight_group = vim.api.nvim_create_augroup("YankHighlight", {clear = true})
--- vim.api.nvim_create_autocmd("TextYankPost", {
---   callback = function() vim.highlight.on_yank() end,
---   group = highlight_group,
---   pattern = "*",
--- })
---
--- -- Plugin configuration
--- --
--- -- With the global config done, it's time to load all those cool plugins!
---
 -- -- telescope configuration
 -- require("telescope").setup {
 --   defaults = {mappings = {i = {["<C-u>"] = false, ["<C-d>"] = false}}},
