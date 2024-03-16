@@ -79,9 +79,6 @@
 -- -- as a source for the Neovim completion engine.
 -- Plug "saadparwaiz1/cmp_luasnip"
 --
--- -- Make the quickfix window modifiable for large find and replace operations.
--- Plug "stefandtw/quickfix-reflector.vim"
---
 -- -- Integrate a test runner.
 -- Plug "vim-test/vim-test"
 --
