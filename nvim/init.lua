@@ -41,9 +41,6 @@
 -- -- with one of the supported LSP servers listed with this plugin.
 -- Plug "neovim/nvim-lspconfig"
 --
--- -- Catch common weasel words like 'easy' when writing prose in Markdown.
--- Plug "nicholaides/words-to-avoid.vim"
---
 -- -- This is a dependency for telescope.
 -- Plug "nvim-lua/plenary.nvim"
 --
