@@ -45,18 +45,6 @@ main () {
         success "Fetched Oh My Zsh."
     fi
 
-    info "Bootstrapping Neovim."
-    local vimplug="$DOTFILES_ROOT/nvim/autoload/plug.vim"
-    if [ -e "$vimplug" ]; then
-        success "vim-plug is available for Neovim."
-    else
-        curl -fLo "$vimplug" \
-            --silent \
-            --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        success "Fetched vim-plug."
-    fi
-
     info "Make Zee Deerectories!"
     local pip="$HOME/.pip"
     if [ -d "$pip" ]; then

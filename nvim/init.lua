@@ -1,17 +1,3 @@
--- -- vim-plug is my Neovim package manager.
--- --
--- -- This plugin is fetched with my `boostrap.sh` script.
--- -- The plugin exists in the Neovim autoload directory
--- -- so that it is available as soon as this `init.lua` script is invoked
--- -- by Neovim.
--- local Plug = vim.fn["plug#"]
---
--- -- All Neovim plugins are declared between `plug#begin` and `plug#end`.
--- --
--- -- vim-plug is only aware of a plugin if the `Plug` function is used
--- -- to declare it.
--- vim.call("plug#begin")
---
 -- -- Neovim LSP completion source
 -- --
 -- -- This plugin provides more completion capabilities
@@ -111,9 +97,6 @@
 -- -- Make the quickfix window modifiable for large find and replace operations.
 -- Plug "stefandtw/quickfix-reflector.vim"
 --
--- -- A dark theme
--- Plug "tanvirtin/monokai.nvim"
---
 -- -- Smart completion of do/end.
 -- Plug "tpope/vim-endwise"
 --
@@ -165,6 +148,7 @@ vim.g.maplocalleader = " "
 vim.g.rg_command = "rg --vimgrep -S"
 
 require("mblayman/lazy_bootstrap")
+require("mblayman/lazy_init")
 
 -- -- Enable break indent
 -- --
@@ -494,15 +478,6 @@ require("mblayman/lazy_bootstrap")
 --   -- Specify the completion sources.
 --   sources = {{name = "nvim_lsp"}, {name = "luasnip"}},
 -- })
---
--- -- Theme
--- --
--- -- My theme selection has to work well f.lux. I mostly code at night
--- -- so my screen is often a deep amber color. I've found that I need high
--- -- contrast themes because the amber haze seems to reduce overall contrast.
--- vim.o.termguicolors = true
--- local monokai = require("monokai")
--- monokai.setup({})
 --
 -- -- Indentation guideline UI (indent-blankline)
 -- require("ibl").setup({indent = {char = "┊"}})
