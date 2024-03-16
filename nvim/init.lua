@@ -25,9 +25,6 @@
 -- -- without installing a dedicated Black plugin.
 -- Plug "jose-elias-alvarez/null-ls.nvim"
 --
--- -- Search in Vim.
--- Plug "jremmen/vim-ripgrep"
---
 -- -- Allow local config files
 -- --
 -- -- This feature puts a guard on `exrc` so that Neovim is not unconditionally
@@ -143,9 +140,6 @@ require("mblayman/lazy_init")
 --
 -- -- Run a test.
 -- vim.keymap.set("n", "<leader>t", ":TestNearest<cr>", {silent = true})
---
--- -- Quick search
--- vim.keymap.set("n", "<leader>a", ":Rg ")
 --
 -- -- Quick save
 -- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>")
