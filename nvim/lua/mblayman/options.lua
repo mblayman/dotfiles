@@ -20,6 +20,15 @@ vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
+-- Sets how neovim will display certain whitespace in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = {tab = "» ", trail = "·", nbsp = "␣"}
+
 -- Enable mouse mode
 vim.opt.mouse = "a"
 
