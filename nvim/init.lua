@@ -138,67 +138,10 @@ vim.g.maplocalleader = " "
 
 vim.g.rg_command = "rg --vimgrep -S"
 
+require("mblayman/options")
 require("mblayman/lazy_bootstrap")
 require("mblayman/lazy_init")
 
--- -- Enable break indent
--- --
--- -- When a line wraps, the wrapped part will indent to the same level as the current line.
--- vim.o.breakindent = true
---
--- -- Set a line at column 81 to give a frame of reference.
--- vim.wo.colorcolumn = "81"
---
--- -- Set completeopt to have a better completion experience
--- vim.o.completeopt = "menuone,noselect"
---
--- -- Hide instead of close files when opening a new file while there are unsaved changes
--- vim.o.hidden = false
---
--- -- Set highlight on search
--- vim.o.hlsearch = false
---
--- -- Case insensitive searching UNLESS /C or capital in search
--- vim.o.ignorecase = true
--- vim.o.smartcase = true
---
--- -- Enable mouse mode
--- vim.o.mouse = "a"
---
--- -- OS X does some weird stuff to PATH on zsh that messes with venvs.
--- -- Using bash is a safe alternative and I don't really need the power
--- -- of zsh through Vim.
--- vim.o.shell = "/bin/bash"
---
--- -- Always show the gutter, even when there are no problems.
--- vim.wo.signcolumn = "yes"
---
--- -- Set the title of the tab to the filename.
--- vim.o.title = true
---
--- -- Save undo history
--- vim.o.undofile = true
---
--- -- Decrease update time
--- --
--- -- The time (in milliseconds) before writing to the swap file.
--- -- I don't know if I actually benefit from this.
--- vim.o.updatetime = 250
---
--- -- Enable line numbers.
--- vim.wo.number = true
---
--- -- Show relative numbers above and below the current number.
--- --
--- -- This is useful for now the jump distantce when calculating larger motions.
--- vim.wo.relativenumber = true
---
--- -- Set the number of reserved lines at the top and bottom before scrolling starts.
--- --
--- -- This lets me see some context above or below wherever I am so I'm not missing
--- -- related information to the line that I'm reading.
--- vim.wo.scrolloff = 10
---
 -- -- Keymaps
 --
 -- -- Make spacebar a noop when not followed by anything else.
