@@ -535,7 +535,8 @@ require("lualine").setup({
 -- nvim-treesitter also improves the ability to navigate through code quickly.
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
-    "c", "go", "graphql", "lua", "markdown", "python", "rust", "toml", "vimdoc", "zig",
+    "c", "go", "graphql", "lua", "markdown", "python", "rust", "templ", "toml",
+    "vimdoc", "zig",
   },
   auto_install = true,
   ignore_install = {},
@@ -596,3 +597,7 @@ require("config-local").setup({
 
 -- Configuration for vim-test.
 vim.g["test#custom_runners"] = {lua = {"luatest"}}
+
+-- For some reason, Neovim is not recognizing the temple file extension.
+-- There is probably a better way to do this, but this is fine for now.
+vim.cmd [[autocmd BufNewFile,BufRead *.templ set ft=templ]]
