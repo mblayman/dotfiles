@@ -4,14 +4,14 @@
 --
 -- Since spacebar is the leader key, don't do anything when the spacebar is hit
 -- by itself.
-vim.keymap.set({"n", "v"}, "<Space>", "<Nop>", {silent = true})
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
 --
 -- By default, Vim wants to treat a wrapping line as a single line.
 -- Detect if there is line wrap, then go to the wrapped portion if there is.
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Leader commands
 
@@ -36,6 +36,8 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", {clear = true}),
-  callback = function() vim.highlight.on_yank() end,
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })

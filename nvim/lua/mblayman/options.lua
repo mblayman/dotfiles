@@ -23,7 +23,7 @@ vim.opt.inccommand = "split"
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = {tab = "» ", trail = "·", nbsp = "␣"}
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Enable mouse mode
 vim.opt.mouse = "a"

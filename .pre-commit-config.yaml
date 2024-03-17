@@ -1,5 +1,5 @@
 repos:
-- repo: https://github.com/mblayman/LuaFormatter
-  rev: "ad94bea01ca027ca46541af727e15d002aa5ce74"
+- repo: https://github.com/JohnnyMorganz/StyLua
+  rev: v0.20.0
   hooks:
-  - id: luaformatter
+  - id: stylua-github
