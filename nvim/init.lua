@@ -256,7 +256,7 @@ require("mblayman/lazy_init")
 --   -- Specify the completion sources.
 --   sources = {{name = "nvim_lsp"}, {name = "luasnip"}},
 -- })
---
--- -- For some reason, Neovim is not recognizing the temple file extension.
--- -- There is probably a better way to do this, but this is fine for now.
--- vim.cmd [[autocmd BufNewFile,BufRead *.templ set ft=templ]]
+
+-- For some reason, Neovim is not recognizing the templ file extension.
+-- There is probably a better way to do this, but this is fine for now.
+vim.cmd [[autocmd BufNewFile,BufRead *.templ set ft=templ]]
