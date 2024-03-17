@@ -48,6 +48,10 @@ vim.opt.undofile = true
 -- I don't know if I actually benefit from this.
 vim.opt.updatetime = 250
 
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 300
+
 -- Enable line numbers.
 vim.opt.number = true
 
