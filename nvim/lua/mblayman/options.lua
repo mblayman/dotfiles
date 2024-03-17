@@ -6,10 +6,6 @@ vim.opt.breakindent = true
 -- Set a line at column 81 to give a frame of reference.
 vim.opt.colorcolumn = "81"
 
--- FIXME: This config may have moved.
--- Set completeopt to have a better completion experience
--- vim.o.completeopt = "menuone,noselect"
-
 -- Hide instead of close files when opening a new file while there are unsaved changes
 vim.opt.hidden = false
 
