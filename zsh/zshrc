@@ -76,3 +76,6 @@ eval "$(starship init zsh)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# This loads the Included Health shell augmentations into your interactive shell
+. "$HOME/.ih/augment.sh"
