@@ -8,3 +8,9 @@ command_timeout = 1000
 
 [aws]
 disabled = true
+
+[custom.aws]
+command = 'echo "$AWS_ENVIRONMENT/$AWS_ENVIRONMENT_ROLE:$AWS_DEFAULT_REGION"'
+format = "[$symbol ($output)]($style) "
+symbol = "🌩 "
+when = true
