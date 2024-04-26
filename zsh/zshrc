@@ -77,7 +77,7 @@ eval "$(starship init zsh)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-gol() {
+function go/() {
 	open https://go/$1
 }
 
