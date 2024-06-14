@@ -11,5 +11,10 @@
     branch = false
 [init]
 	defaultBranch = main
+	templateDir = /Users/matt.layman/.ih/git-template
 [alias]
     gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
+[core]
+	excludesfile = /Users/matt.layman/.gitignore_global
+[url "git@github.com:ConsultingMD"]
+	insteadOf = https://github.com/ConsultingMD
