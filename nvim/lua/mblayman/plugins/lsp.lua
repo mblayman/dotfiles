@@ -140,7 +140,13 @@ return {
     --  See `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
       clangd = {}, -- C
-      gopls = {}, -- Go
+      gopls = {
+        settings = {
+          gopls = {
+            buildFlags = { "-tags=acceptance server" },
+          },
+        },
+      }, -- Go
       pyright = {}, -- Python
       lua_ls = {
         -- cmd = {...},
