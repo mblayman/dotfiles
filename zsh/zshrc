@@ -45,11 +45,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git asdf)
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/opt/llvm/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -58,6 +59,9 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+
+# This loads the Included Health shell augmentations into your interactive shell
+. "$HOME/.ih/augment.sh"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -77,9 +81,5 @@ eval "$(starship init zsh)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-function go/() {
-	open https://go/$1
-}
-
-# This loads the Included Health shell augmentations into your interactive shell
-. "$HOME/.ih/augment.sh"
+# Created by `pipx` on 2024-07-31 02:24:00
+export PATH="$PATH:/Users/matt/.local/bin"
