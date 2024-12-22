@@ -15,3 +15,4 @@ before I can get to my automation.
 4. Set an ssh key in GitHub.
 5. Clone `dotfiles` from GitHub.
 6. Run `bootstap.sh`.
+7. (Linux) Open GNOME Terminal > Edit > Preferences > Profiles > Unnamed > Custom font > Choose your Nerd Font from the list.

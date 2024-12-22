@@ -58,6 +58,20 @@ main () {
         success "Fetched Oh My Zsh."
     fi
 
+    # Handle nerd font install.
+    if [[ "$os_name" == "Linux" ]]; then
+        if [ ! -f ~/.local/share/fonts/UbuntuMonoNerdFont-Regular.ttf ]; then
+            info "Install Ubuntu Mono nerd font."
+            mkdir -p ~/.local/share/fonts
+            curl -L -o ~/.local/share/fonts/UbuntuMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/UbuntuMono.zip
+            unzip ~/.local/share/fonts/UbuntuMono.zip -d ~/.local/share/fonts
+            rm ~/.local/share/fonts/UbuntuMono.zip
+            fc-cache -f -v
+        else
+            success "Ubuntu Mono nerd font is available."
+        fi
+    fi
+
     if command -v starship &> /dev/null; then
         success "starship is available."
     else
