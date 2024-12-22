@@ -9,6 +9,8 @@ DOTFILES_ROOT="$(pwd)"
 # Make bash finicky.
 set -e
 
+os_name=$(uname)
+
 source "$DOTFILES_ROOT/lib/logging.sh"
 
 link () {
@@ -28,7 +30,18 @@ link () {
 main () {
     info "Let's get this party started!"
 
-    brew bundle --file $DOTFILES_ROOT/Brewfile
+    if [[ "$os_name" == "Darwin" ]]; then
+        brew bundle --file $DOTFILES_ROOT/Brewfile
+    else
+        sudo apt-get install -y \
+            clang \
+            curl \
+            direnv \
+            fzf \
+            neovim \
+            ripgrep \
+            zsh
+    fi
 
     info "Boostrapping Zsh."
     if [[ $SHELL == "/bin/zsh" ]]; then
@@ -45,19 +58,16 @@ main () {
         success "Fetched Oh My Zsh."
     fi
 
-    info "Make Zee Deerectories!"
-    local pip="$HOME/.pip"
-    if [ -d "$pip" ]; then
-        success "$pip exists."
+    if command -v starship &> /dev/null; then
+        success "starship is available."
     else
-        mkdir -p "$pip"
-        success "Created $pip."
+        info "Fetching starship."
+        curl -sS https://starship.rs/install.sh | sh
     fi
 
     info "Symlink ALL THE THINGS!"
     link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
     link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
-    link "$DOTFILES_ROOT/pip.conf" "$HOME/.pip/pip.conf"
     link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
     link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
     mkdir -p "$HOME/.config"
@@ -66,7 +76,8 @@ main () {
 
     info "Watch out for VPN issues!"
     info "Install Neovim plugins."
-    nvim --headless +PlugInstall +q
+    nvim --headless +Lazy +q
+    echo ""
 
     # iTerm2 config
     # Appearance > Tabs > Uncheck "Show activity indicator"
@@ -75,7 +86,9 @@ main () {
     # Profiles > Text > Font > Use "UbuntuMono Nerd Font Mono" at 14pt
     # Profiles > Terminal > Check "Silence bell"
 
-    info "Check your iTerm2 configuration."
+    if [[ "$os_name" == "Darwin" ]]; then
+        info "Check your iTerm2 configuration."
+    fi
 
     success "You're golden!"
 }
