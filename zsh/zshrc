@@ -49,9 +49,18 @@ plugins=(git asdf)
 
 # User configuration
 
+# Keep command history right away.
+# I was noticing on my Ubuntu Framework machine that my history from the commands
+# when I first installed seemed to be gone. Because of this, I struggled to find
+# `xsel`. By using this option, the history file should be updated regularly.
+setopt inc_append_history
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# I think that `uv` added this.
+. "$HOME/.local/bin/env"
 
 source $ZSH/oh-my-zsh.sh
 
