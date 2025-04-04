@@ -69,6 +69,10 @@ source $ZSH/oh-my-zsh.sh
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
+# This loads the Included Health shell augmentations into your interactive shell
+. "$HOME/.ih/augment.sh"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
