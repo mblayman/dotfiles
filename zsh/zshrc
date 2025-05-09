@@ -89,3 +89,5 @@ eval "$(starship init zsh)"
 
 # Created by `pipx` on 2024-07-31 02:24:00
 export PATH="$PATH:/Users/matt/.local/bin"
+# Added by Rancher Desktop
+export PATH="$PATH:/Users/matt/.rd/bin"
