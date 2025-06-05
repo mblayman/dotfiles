@@ -72,6 +72,8 @@ eval "$(starship init zsh)"
 # This loads the Included Health shell augmentations into your interactive shell
 . "$HOME/.ih/augment.sh"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export GOBIN="$HOME/go/bin"
+export PATH="$PATH:$GOBIN"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
