@@ -139,7 +139,9 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     --  See `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
-      clangd = {}, -- C
+      clangd = {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+      }, -- C
       gopls = {
         settings = {
           gopls = {
@@ -162,6 +164,9 @@ return {
             telemetry = { enable = false },
           },
         },
+      },
+      buf_ls = {
+        filetypes = { "proto" },
       },
     }
 
