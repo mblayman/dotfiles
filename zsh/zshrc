@@ -30,6 +30,15 @@ precmd() {
    echo "$LAST_TIMESTAMP: $LAST_COMMAND" >> $logfile
 }
 
+# Add a separator when a new terminal session starts
+if [[ -z $ZSH_SESSION_STARTED ]]; then
+   # Mark this session as started
+   ZSH_SESSION_STARTED=1
+   # Log a separator to the terminal-specific file
+   local logfile=~/.logs/zsh_history_$(tty | sed 's|/dev/||' | tr -d '/').log
+   echo "--- New Session: $(date '+%Y-%m-%d %H:%M:%S %z') ---" >> $logfile
+fi
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/opt/llvm/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
