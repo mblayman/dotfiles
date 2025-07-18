@@ -36,6 +36,7 @@ if [[ -z $ZSH_SESSION_STARTED ]]; then
    ZSH_SESSION_STARTED=1
    # Log a separator to the terminal-specific file
    local logfile=~/.logs/zsh_history_$(tty | sed 's|/dev/||' | tr -d '/').log
+   echo "Log file for this session is: ${logfile}"
    echo "--- New Session: $(date '+%Y-%m-%d %H:%M:%S %z') ---" >> $logfile
 fi
 
