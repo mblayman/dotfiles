@@ -127,6 +127,9 @@ return {
       capabilities,
       require("cmp_nvim_lsp").default_capabilities()
     )
+    -- Force all LSP clients to use utf-16 offset encoding to avoid mismatches
+    -- between servers like pyright (defaults to utf-16) and ruff (defaults to utf-8)
+    capabilities.offsetEncoding = { "utf-16" }
 
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -142,6 +145,7 @@ return {
       clangd = {}, -- C
       gopls = {}, -- Go
       pyright = {}, -- Python
+      ruff = {}, -- Python linter/formatter (forces utf-16 via global capabilities)
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},

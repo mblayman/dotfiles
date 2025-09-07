@@ -12,9 +12,11 @@ return {
     --   -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
     -- },
     provider = "ollama",
-    ollama = {
-      endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
-      model = "deepseek-r1:latest",
+    providers = {
+      ollama = {
+        endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
+        model = "deepseek-r1:latest",
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
