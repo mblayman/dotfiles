@@ -1,10 +1,38 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
+# When set to true, this adds newlines between shell prompts. I don't like that.
 add_newline = false
 # The default is 500ms, but I had a git command timeout
 # when navigating to a directory and it launched a warning.
 # That's annoying.
 command_timeout = 1000
+# This controls all plugins used. Most plugins are gone because $all is not selected.
+format = "[$directory$git_branch$git_status]($style)$character"
 
-[aws]
-disabled = true
+[character]
+error_symbol = "[✗](bold red)"
+
+[directory]
+truncation_length = 2
+truncation_symbol = "…/"
+repo_root_style = "bold cyan"
+repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+format = "[$branch]($style) "
+style = "italic cyan"
+
+[git_status]
+format     = '[$all_status]($style)'
+style      = "cyan"
+ahead      = "⇡${count} "
+diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
+behind     = "⇣${count} "
+conflicted = " "
+up_to_date = " "
+untracked  = "? "
+modified   = " "
+stashed    = ""
+staged     = ""
+renamed    = ""
+deleted    = ""
