@@ -12,6 +12,11 @@ return {
     "klen/nvim-config-local",
     opts = require("mblayman.configs.config_local").opts,
   },
+  -- Git info in the buffer (e.g., gutter info)
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = require("mblayman.configs.gitsigns").opts,
+  },
   -- Catch common weasel words like 'easy' when writing prose in Markdown.
   {
     "nicholaides/words-to-avoid.vim",
