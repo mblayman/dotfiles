@@ -1,4 +1,10 @@
 return {
+  -- Useful plugin to show you pending keybinds.
+  {
+    "folke/which-key.nvim",
+    event = "VimEnter",
+    config = require("mblayman.configs.which_key").config,
+  },
   -- Search in Vim.
   {
     "jremmen/vim-ripgrep",
