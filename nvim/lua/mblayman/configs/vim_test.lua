@@ -1,7 +1,4 @@
-return {}
--- Integrate a test runner.
 return {
-  "vim-test/vim-test",
   config = function()
     vim.g["test#custom_runners"] = { lua = { "luatest" } }
 

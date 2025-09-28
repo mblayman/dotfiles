@@ -80,4 +80,9 @@ return {
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   "tpope/vim-unimpaired", -- Shortcuts for quickly navigating quicklists and such.
   "tpope/vim-vinegar", -- Make netrw more awesome. oil.nvim might be a good alternative.
+  -- Integrate a test runner.
+  {
+    "vim-test/vim-test",
+    config = require("mblayman.configs.vim_test").config,
+  },
 }
