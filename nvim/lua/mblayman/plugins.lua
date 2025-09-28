@@ -4,8 +4,19 @@ return {
     "jremmen/vim-ripgrep",
     config = require("mblayman.configs.ripgrep").config,
   },
-  "nicholaides/words-to-avoid.vim", -- Catch common weasel words like 'easy' when writing prose in Markdown.
-  "stefandtw/quickfix-reflector.vim", -- Make the quickfix window modifiable for large find and replace operations.
+  -- Catch common weasel words like 'easy' when writing prose in Markdown.
+  {
+    "nicholaides/words-to-avoid.vim",
+  },
+  -- Make the quickfix window modifiable for large find and replace operations.
+  {
+    "stefandtw/quickfix-reflector.vim",
+  },
+  -- Autoformat
+  {
+    "stevearc/conform.nvim",
+    opts = require("mblayman.configs.conform").opts,
+  },
   -- Theme
   --
   -- TODO: Do I still need this??? How can I do dynamic theme selection?
