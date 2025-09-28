@@ -1,3 +1,4 @@
+return {}
 -- A programming language parser
 --
 -- Tree-sitter is a C library design to do parsing of programming languages.

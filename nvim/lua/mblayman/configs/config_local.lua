@@ -1,3 +1,4 @@
+return {}
 -- Allow local config files
 --
 -- This feature puts a guard on `exrc` so that Neovim is not unconditionally

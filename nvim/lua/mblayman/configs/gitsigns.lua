@@ -1,4 +1,5 @@
--- -- Git info the buffer (e.g., gutter info)
+return {}
+-- Git info the buffer (e.g., gutter info)
 return {
   "lewis6991/gitsigns.nvim",
   opts = {

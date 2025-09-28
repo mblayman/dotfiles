@@ -1,3 +1,4 @@
+return {}
 -- Guidelines UI for indentation
 --
 -- This plugin adds subtle guidelines at indentation stops

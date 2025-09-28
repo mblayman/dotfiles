@@ -13,7 +13,7 @@ vim.g.rg_command = "rg --vimgrep -S"
 require("mblayman/options")
 require("mblayman/keymaps")
 require("mblayman/lazy_bootstrap")
-require("mblayman/lazy_init")
+require("lazy").setup(require("mblayman/plugins"))
 
 -- For some reason, Neovim is not recognizing the templ file extension.
 -- There is probably a better way to do this, but this is fine for now.

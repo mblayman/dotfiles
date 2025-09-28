@@ -1,3 +1,4 @@
+return {}
 -- Neovim autocompletion engine
 --
 -- This plugin is the core completion engine that can be fed completions

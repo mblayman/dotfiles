@@ -1,3 +1,4 @@
+return {}
 -- Integrate a test runner.
 return {
   "vim-test/vim-test",

@@ -1,3 +1,4 @@
+return {}
 -- A comment plugin that works as `gc`.
 return {
   "numToStr/Comment.nvim",

@@ -1,3 +1,4 @@
+return {}
 -- The configuration plugin for Neovim LSP integration
 --
 -- This plugin provides configuration that integrates Neovim (an LSP client)
