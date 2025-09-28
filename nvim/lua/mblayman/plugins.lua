@@ -4,6 +4,14 @@ return {
     "jremmen/vim-ripgrep",
     config = require("mblayman.configs.ripgrep").config,
   },
+  -- Allow local config files
+  --
+  -- This feature puts a guard on `exrc` so that Neovim is not unconditionally
+  -- sourcing random rc files.
+  {
+    "klen/nvim-config-local",
+    opts = require("mblayman.configs.config_local").opts,
+  },
   -- Catch common weasel words like 'easy' when writing prose in Markdown.
   {
     "nicholaides/words-to-avoid.vim",
