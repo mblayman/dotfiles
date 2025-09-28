@@ -8,6 +8,11 @@ return {
   {
     "nicholaides/words-to-avoid.vim",
   },
+  -- A fancy status line
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = require("mblayman.configs.lualine").opts,
+  },
   -- Make the quickfix window modifiable for large find and replace operations.
   {
     "stefandtw/quickfix-reflector.vim",
