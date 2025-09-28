@@ -1,21 +1,4 @@
-return {}
--- Fuzzy finder
 return {
-  "nvim-telescope/telescope.nvim",
-  event = "VimEnter",
-  branch = "0.1.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim", -- dependency of telescope for utility functions
-    "nvim-telescope/telescope-ui-select.nvim", -- Sets `vim.ui.select` to telescope.
-    "nvim-tree/nvim-web-devicons", -- Adds icons like filetype icons.
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      cond = function()
-        return vim.fn.executable("make") == 1
-      end,
-    },
-  },
   config = function()
     require("telescope").setup({
       extensions = { ["ui-select"] = { require("telescope.themes").get_dropdown() } },
@@ -30,6 +13,7 @@ return {
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
     vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
     vim.keymap.set("n", "<leader>sf", builtin.git_files, { desc = "[S]earch [F]iles" })
+    vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
     vim.keymap.set(
       "n",
       "<leader>sa",
@@ -70,8 +54,8 @@ return {
     vim.keymap.set(
       "n",
       "<leader><leader>",
-      builtin.buffers,
-      { desc = "[ ] Find existing buffers" }
+      builtin.git_files,
+      { desc = "[ ] Search Files" }
     )
 
     vim.keymap.set("n", "<leader>/", function()

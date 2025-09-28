@@ -21,6 +21,25 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = require("mblayman.configs.lualine").opts,
   },
+  -- Fuzzy finder
+  {
+    "nvim-telescope/telescope.nvim",
+    event = "VimEnter",
+    branch = "0.1.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- dependency of telescope for utility functions
+      "nvim-telescope/telescope-ui-select.nvim", -- Sets `vim.ui.select` to telescope.
+      "nvim-tree/nvim-web-devicons", -- Adds icons like filetype icons.
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        cond = function()
+          return vim.fn.executable("make") == 1
+        end,
+      },
+    },
+    config = require("mblayman.configs.telescope").config,
+  },
   -- Make the quickfix window modifiable for large find and replace operations.
   {
     "stefandtw/quickfix-reflector.vim",
