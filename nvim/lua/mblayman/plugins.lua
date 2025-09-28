@@ -27,6 +27,11 @@ return {
   {
     "nicholaides/words-to-avoid.vim",
   },
+  -- A comment plugin that works as `gc`.
+  {
+    "numToStr/Comment.nvim",
+    config = require("mblayman.configs.comment").config,
+  },
   -- A fancy status line
   {
     "nvim-lualine/lualine.nvim",

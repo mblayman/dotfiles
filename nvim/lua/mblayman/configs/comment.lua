@@ -1,7 +1,4 @@
-return {}
--- A comment plugin that works as `gc`.
 return {
-  "numToStr/Comment.nvim",
   config = function()
     require("Comment").setup()
     local ft = require("Comment.ft")
