@@ -23,6 +23,18 @@ return {
     "lewis6991/gitsigns.nvim",
     opts = require("mblayman.configs.gitsigns").opts,
   },
+  -- Guidelines UI for indentation
+  --
+  -- This plugin adds subtle guidelines at indentation stops
+  -- so that my eyes can follow the relevant scoping.
+  --
+  -- If I ever need to include snacks some day, it has an indent option
+  -- that could probably replace this plugin.
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
   -- Catch common weasel words like 'easy' when writing prose in Markdown.
   {
     "nicholaides/words-to-avoid.vim",
