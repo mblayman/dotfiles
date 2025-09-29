@@ -120,8 +120,6 @@ main() {
     curl -sS https://starship.rs/install.sh | sh
   fi
 
-  # TODO: handle mise (maybe)
-
   info "Symlink ALL THE THINGS!"
   link "$DOTFILES_ROOT/.bash_profile" "$HOME/.bash_profile"
   link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
