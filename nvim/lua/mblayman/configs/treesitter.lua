@@ -1,19 +1,4 @@
-return {}
--- A programming language parser
---
--- Tree-sitter is a C library design to do parsing of programming languages.
--- It can do incremental parsing and builds a concrete syntax tree,
--- so it is well suited to be a parser for code in an editor like Neovim.
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  dependencies = {
-    -- Syntax-aware text objects
-    --
-    -- Make Neovim's text objects (e.g., `ip` for "inner paragraph") smarter
-    -- and aware of the language syntax that is selected.
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
   opts = {
     ensure_installed = {
       "bash",
