@@ -4,3 +4,8 @@ nvim/autoload/*
 
 # OS X
 .DS_Store
+
+# Omarchy stuff
+# Omarchy symlinks a theme file intended for LazyVim. My lazy setup loads
+# from mblayman/plugins instead of plugins, so the file doesn't do anything.
+nvim/lua/plugins/theme.lua

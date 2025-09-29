@@ -1,4 +1,5 @@
 return {
+  { "folke/tokyonight.nvim" },
   -- Useful plugin to show you pending keybinds.
   {
     "folke/which-key.nvim",
@@ -192,11 +193,21 @@ return {
   -- My theme selection has to work well with f.lux. I mostly code at night
   -- so my screen is often a deep amber color. I've found that I need high
   -- contrast themes because the amber haze seems to reduce overall contrast.
+  -- {
+  --   "tanvirtin/monokai.nvim",
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   init = function()
+  --     vim.cmd.colorscheme("monokai")
+  --   end,
+  -- },
+  -- This is the monokai theme version that Omarchy includes.
+  -- I don't get dynamic theme switching because Omarchy uses LazyVim's
+  -- colorscheme option, but this is probably good enough for now.
   {
-    "tanvirtin/monokai.nvim",
+    "gthelding/monokai-pro.nvim",
     priority = 1000, -- make sure to load this before all the other start plugins
     init = function()
-      vim.cmd.colorscheme("monokai")
+      vim.cmd.colorscheme("monokai-pro-ristretto")
     end,
   },
   "tpope/vim-endwise", -- Smart completion of do/end.
