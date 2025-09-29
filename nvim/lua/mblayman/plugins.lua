@@ -5,6 +5,61 @@ return {
     event = "VimEnter",
     config = require("mblayman.configs.which_key").config,
   },
+  -- Neovim autocompletion engine
+  --
+  -- This plugin is the core completion engine that can be fed completions
+  -- from sources like an LSP server or a snippet plugin.
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      -- Snippet Engine & its associated nvim-cmp source
+      {
+        -- Snippet engine
+        --
+        -- This is tool for doing fancy autocomplete of common activities
+        -- (e.g., making a function with a standard docstring)
+        --
+        -- TODO: learn more about this later. For now, nvim-cmp requires a snippet
+        -- engine for some reason and that's the only reason why I've included
+        -- this plugin.
+        "L3MON4D3/LuaSnip",
+        build = (function()
+          -- Build Step is needed for regex support in snippets
+          -- This step is not supported in many windows environments
+          -- Remove the below condition to re-enable on windows
+          if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
+            return
+          end
+          return "make install_jsregexp"
+        end)(),
+        dependencies = {
+          -- `friendly-snippets` contains a variety of premade snippets.
+          --    See the README about individual language/framework/plugin snippets:
+          --    https://github.com/rafamadriz/friendly-snippets
+          {
+            "rafamadriz/friendly-snippets",
+            config = function()
+              require("luasnip.loaders.from_vscode").lazy_load()
+            end,
+          },
+        },
+      },
+      -- LuaSnip completion source connector
+      --
+      -- This plugin bridges the LuaSnip snippet engine
+      -- as a source for the Neovim completion engine.
+      "saadparwaiz1/cmp_luasnip", --
+      -- Neovim LSP completion source
+      --
+      -- This plugin provides more completion capabilities
+      -- that the Neovim client can expose to LSP servers.
+      -- The LSP server can then enrich what the completion engine can do.
+      "hrsh7th/cmp-nvim-lsp", --
+      "hrsh7th/cmp-path",
+    },
+    config = require("mblayman.configs.nvim_cmp").config,
+  },
   -- Search in Vim.
   {
     "jremmen/vim-ripgrep",
@@ -34,6 +89,41 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {},
+  },
+  -- The configuration plugin for Neovim LSP integration
+  --
+  -- This plugin provides configuration that integrates Neovim (an LSP client)
+  -- with one of the supported LSP servers listed with this plugin.
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- Neovim LSP package manager
+      --
+      -- This plugin has the job of fetching LSP servers and clients
+      -- so that I don't have to. I get to specify something like "pyright"
+      -- and mason.nvim does the rest.
+      --
+      -- mason.nvim does *not* do any configuration of LSP clients and servers.
+      -- That configuration is delegating to other plugins.
+      "williamboman/mason.nvim", --
+      -- Bridge between mason.nvim and lspconfig
+      --
+      -- This plugin is a compatibility layer that allows mason-installed LSP servers
+      -- to have easier configuration with the lspconfig plugin.
+      "williamboman/mason-lspconfig.nvim",
+      -- Automatically install LSPs and related tools to stdpath for neovim
+      "WhoIsSethDaniel/mason-tool-installer.nvim", --
+      -- LSP progress UI
+      --
+      -- This plugin adds a bit of UI above the status line to show the progress
+      -- state of an LSP server if that state is available.
+      { "j-hui/fidget.nvim", opts = {} },
+
+      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+      -- used for completion, annotations and signatures of Neovim apis
+      { "folke/neodev.nvim", opts = {} },
+    },
+    config = require("mblayman.configs.nvim_lspconfig").config,
   },
   -- Catch common weasel words like 'easy' when writing prose in Markdown.
   {
