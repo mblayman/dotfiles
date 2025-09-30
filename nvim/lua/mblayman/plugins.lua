@@ -188,8 +188,6 @@ return {
   },
   -- Theme
   --
-  -- TODO: Do I still need this??? How can I do dynamic theme selection?
-  --
   -- My theme selection has to work well with f.lux. I mostly code at night
   -- so my screen is often a deep amber color. I've found that I need high
   -- contrast themes because the amber haze seems to reduce overall contrast.
