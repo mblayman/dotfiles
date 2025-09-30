@@ -63,6 +63,8 @@ main() {
   arch)
     sudo pacman -S --noconfirm \
       direnv \
+      go \
+      nodejs \
       zsh
     ;;
   ubuntu)
