@@ -173,6 +173,8 @@ return {
       -- Make Neovim's text objects (e.g., `ip` for "inner paragraph") smarter
       -- and aware of the language syntax that is selected.
       "nvim-treesitter/nvim-treesitter-textobjects",
+      -- Adds closing tags to HTML and JSX stuff.
+      "windwp/nvim-ts-autotag",
     },
     opts = require("mblayman.configs.treesitter").opts,
     config = require("mblayman.configs.treesitter").config,
