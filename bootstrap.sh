@@ -66,6 +66,7 @@ main() {
       direnv \
       go \
       nodejs \
+      npm \
       zsh
     ;;
   ubuntu)
