@@ -61,6 +61,7 @@ main() {
 
   case "$os" in
   arch)
+    sudo pacman -Syy
     sudo pacman -S --noconfirm \
       direnv \
       go \
