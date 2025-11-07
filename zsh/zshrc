@@ -58,3 +58,9 @@ eval "$(starship init zsh)"
 export PATH="$PATH:/Users/matt/.local/bin"
 # Added by Rancher Desktop
 export PATH="$PATH:/Users/matt/.rd/bin"
+
+# opencode
+export PATH="/home/matt/.opencode/bin:$PATH"
+
+# beads
+export PATH="$PATH:/home/matt/go/bin"
