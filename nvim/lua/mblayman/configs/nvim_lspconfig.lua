@@ -114,6 +114,25 @@ return {
       gopls = {}, -- Go
       pyright = {}, -- Python
       ruff = {}, -- Python linter/formatter (forces utf-16 via global capabilities)
+      ts_ls = {
+        -- Disable formatting built into ts_ls since we use conform.nvim
+        settings = {
+          typescript = {
+            format = {
+              indentSize = "Ignore",
+              tabSize = "Ignore",
+              convertTabsToSpaces = "Ignore",
+            },
+          },
+          javascript = {
+            format = {
+              indentSize = "Ignore",
+              tabSize = "Ignore",
+              convertTabsToSpaces = "Ignore",
+            },
+          },
+        },
+      }, -- TypeScript/JavaScript
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -141,6 +160,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers)
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format lua code
+      "prettier", -- Used to format TypeScript/JavaScript
     })
     require("mason-tool-installer").setup({
       ensure_installed = ensure_installed,

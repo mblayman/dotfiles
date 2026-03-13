@@ -15,6 +15,12 @@ return {
       c = { "clang-format" },
       lua = { "stylua" },
       python = { "ruff_fix", "ruff_format" },
+      javascript = { "prettierd", "prettier" },
+      javascriptreact = { "prettierd", "prettier" },
+      typescript = { "prettierd", "prettier" },
+      typescriptreact = { "prettierd", "prettier" },
+      json = { "prettierd", "prettier" },
+      html = { "prettierd", "prettier" },
     },
   },
 }
