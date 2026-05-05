@@ -129,6 +129,7 @@ main() {
   link "$DOTFILES_ROOT/git/.gitconfig" "$HOME/.gitconfig"
   link "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
   link "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
+  link "$DOTFILES_ROOT/agents" "$HOME/.agents"
   mkdir -p "$HOME/.config"
   link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
   link "$DOTFILES_ROOT/starship.toml" "$HOME/.config/starship.toml"
