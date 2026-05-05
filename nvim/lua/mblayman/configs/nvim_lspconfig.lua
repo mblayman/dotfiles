@@ -159,6 +159,7 @@ return {
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers)
     vim.list_extend(ensure_installed, {
+      "typescript-language-server", -- Required for ts_ls
       "stylua", -- Used to format lua code
       "prettier", -- Used to format TypeScript/JavaScript
     })

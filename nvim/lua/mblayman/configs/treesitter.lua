@@ -7,6 +7,7 @@ return {
       "graphql",
       "lua",
       "markdown",
+      "proto",
       "python",
       "rust",
       "templ",
