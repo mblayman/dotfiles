@@ -166,17 +166,25 @@ return {
   -- so it is well suited to be a parser for code in an editor like Neovim.
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
     dependencies = {
       -- Syntax-aware text objects
       --
       -- Make Neovim's text objects (e.g., `ip` for "inner paragraph") smarter
       -- and aware of the language syntax that is selected.
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        config = require("mblayman.configs.treesitter_textobjects").config,
+      },
       -- Adds closing tags to HTML and JSX stuff.
-      "windwp/nvim-ts-autotag",
+      {
+        "windwp/nvim-ts-autotag",
+        opts = {},
+      },
     },
-    opts = require("mblayman.configs.treesitter").opts,
     config = require("mblayman.configs.treesitter").config,
   },
   -- Make the quickfix window modifiable for large find and replace operations.
@@ -221,49 +229,12 @@ return {
     "vim-test/vim-test",
     config = require("mblayman.configs.vim_test").config,
   },
-  -- AI interface
+  "stevearc/dressing.nvim",
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "nvim-tree/nvim-web-devicons",
-      -- "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      file_types = { "markdown" },
     },
-    opts = require("mblayman.configs.avante").opts,
+    ft = { "markdown" },
   },
 }
