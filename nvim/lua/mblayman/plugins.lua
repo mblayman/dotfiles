@@ -144,7 +144,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     event = "VimEnter",
-    branch = "0.1.x",
+    version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim", -- dependency of telescope for utility functions
       "nvim-telescope/telescope-ui-select.nvim", -- Sets `vim.ui.select` to telescope.
