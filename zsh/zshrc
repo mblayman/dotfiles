@@ -64,3 +64,10 @@ export PATH="/home/matt/.opencode/bin:$PATH"
 
 # beads
 export PATH="$PATH:/home/matt/go/bin"
+
+# bun completions
+[ -s "/home/matt/.bun/_bun" ] && source "/home/matt/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
