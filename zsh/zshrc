@@ -2,7 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-plugins=(asdf git mise)
+plugins=(asdf git kubectl mise)
 
 # User configuration
 
@@ -53,6 +53,8 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+
+alias m="mise run"
 
 # Created by `pipx` on 2024-07-31 02:24:00
 export PATH="$PATH:/Users/matt/.local/bin"
