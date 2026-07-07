@@ -73,3 +73,6 @@ export PATH="$PATH:/home/matt/go/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Feed GitHub CLI authentication token directly to mise
+export MISE_GITHUB_TOKEN=$(gh auth token 2>/dev/null)
