@@ -13,3 +13,9 @@
 	defaultBranch = main
 [alias]
     gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f"
+[credential "https://github.com"]
+	helper = 
+	helper = !/Users/matt.layman/.local/share/mise/installs/gh/latest/gh_2.95.0_macOS_arm64/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/Users/matt.layman/.local/share/mise/installs/gh/latest/gh_2.95.0_macOS_arm64/bin/gh auth git-credential
