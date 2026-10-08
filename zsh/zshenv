@@ -5,3 +5,4 @@ WORKON_HOME="$HOME/.virtualenvs"
 export WORKON_HOME
 # Looks bad on Omarchy
 # export BAT_THEME="GitHub"
+. "$HOME/.cargo/env"

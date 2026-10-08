@@ -57,18 +57,18 @@ eval "$(starship init zsh)"
 alias m="mise run"
 
 # Created by `pipx` on 2024-07-31 02:24:00
-export PATH="$PATH:/Users/matt/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 # Added by Rancher Desktop
-export PATH="$PATH:/Users/matt/.rd/bin"
+export PATH="$PATH:$HOME/.rd/bin"
 
 # opencode
-export PATH="/home/matt/.opencode/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
 
 # beads
-export PATH="$PATH:/home/matt/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 # bun completions
-[ -s "/home/matt/.bun/_bun" ] && source "/home/matt/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"

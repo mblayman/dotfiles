@@ -3,4 +3,4 @@ CLICOLOR=1
 EDITOR=nvim
 export CLICOLOR EDITOR
 
-export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"
